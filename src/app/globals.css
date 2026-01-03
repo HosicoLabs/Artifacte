@@ -1,15 +1,53 @@
 @import "tailwindcss";
 
+/* Font Switzer */
+@font-face {
+  font-family: "Switzer";
+  src: url("/font/Switzer/Switzer-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Font Philosopher */
+@font-face {
+  font-family: "Philosopher";
+  src: url("/font/Philosopher/Philosopher-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Font Geist */
+@font-face {
+  font-family: "Geist";
+  src: url("/font/Geist/static/Geist-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+@theme {
+  /* font */
+  --font-switzer: "switzer", sans-serif;
+  --font-philosopher: "philosopher", sans-serif;
+  --font-geist: "geist", sans-serif;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +60,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
