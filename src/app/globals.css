@@ -24,21 +24,27 @@
   font-style: normal;
 }
 
+/* Font Inter */
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter/Inter_18pt-Regular.ttf.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter/Inter_18pt-Medium.ttf.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --switzer-font: "switzer", sans-serif;
   --philosopher-font: "philosopher", sans-serif;
   --geist-font: "Geist", sans-serif;
-}
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: inherit;
+  --inter-font: "Inter", sans-serif;
 }
 
 @theme {
@@ -46,6 +52,7 @@
   --font-switzer: var(--swizer-font);
   --font-philosopher: var(--philosopher-font);
   --font-geist: var(--geist-font);
+  --font-inter: var(--inter-font);
 }
 
 @theme inline {
