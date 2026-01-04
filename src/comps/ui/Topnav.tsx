@@ -26,7 +26,7 @@ const URLS = [
 
 export default function Topnav() {
   return (
-    <nav className="flex items-center justify-between px-10 py-3">
+    <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-10 py-3">
       <div>
         <Link href="#">
           <img className="h-6" src="./img/logo-light.png" alt="artifacte" />
