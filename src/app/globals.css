@@ -3,6 +3,12 @@
 /* Font Switzer */
 @font-face {
   font-family: "Switzer";
+  src: url("/font/Switzer/Switzer-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Switzer";
   src: url("/font/Switzer/Switzer-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
