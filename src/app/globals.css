@@ -7,6 +7,12 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "Switzer";
+  src: url("/font/Switzer/Switzer-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
 
 /* Font Philosopher */
 @font-face {
