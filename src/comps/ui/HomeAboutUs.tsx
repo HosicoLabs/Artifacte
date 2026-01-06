@@ -1,8 +1,9 @@
 import Link from "next/link";
+import SectionWrapper from "../primitive/SectionWrapper";
 
 export default function HomeAboutUs() {
   return (
-    <section className="bg-white px-10 py-30">
+    <SectionWrapper className="md:bg-white md:px-10 md:py-30">
       <p className="uppercase font-inter text-[18px] font-medium opacity-60 mb-4">
         about us
       </p>
@@ -35,6 +36,6 @@ export default function HomeAboutUs() {
           />
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

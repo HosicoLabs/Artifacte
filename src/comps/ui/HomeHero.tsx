@@ -1,9 +1,10 @@
 import Button from "../primitive/Button";
 import Picture from "../primitive/Picture";
+import SectionWrapper from "../primitive/SectionWrapper";
 
 export default function HomeHero() {
   return (
-    <section className="relative">
+    <SectionWrapper className="relative md:px-0  px-0 pt-0 md:pt-0 pb-0 md:pb-0">
       <div className="absolute z-10 block h-62.5 pointer-events-none bg-linear-to-b from-[#00000040] to-[#00000000] "></div>
       <Picture
         mdSrc="./img/home-hero.webp"
@@ -23,6 +24,6 @@ export default function HomeHero() {
           <Button>explore auctions</Button>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
