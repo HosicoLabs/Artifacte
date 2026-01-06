@@ -1,10 +1,12 @@
 import Button from "../primitive/Button";
+import Picture from "../primitive/Picture";
 import SectionName from "../primitive/SectionName";
 import SectionWrapper from "../primitive/SectionWrapper";
 
 type CuratedItemType = {
   name: string;
   img: string;
+  imgSm: string;
   currentBid: string | null;
   bidEnded: string | null;
   currentPrice: string | null;
@@ -17,6 +19,7 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: "1d 12h",
     currentPrice: null,
     img: "./img/oakwood-cabinet.png",
+    imgSm: "./img/oakwood-cabinet-sm.png",
   },
   {
     name: "hand crafted storage (1954)",
@@ -24,6 +27,7 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: "1d 12h",
     currentPrice: null,
     img: "./img/hand-crafted-storage.png",
+    imgSm: "./img/hand-crafted-storage-sm.png",
   },
   {
     name: "pair of molina armless",
@@ -31,6 +35,7 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: "1d 12h",
     currentPrice: null,
     img: "./img/pair-of-molina-armless.png",
+    imgSm: "./img/pair-of-molina-armless-sm.png",
   },
   {
     name: "edwin dining chair",
@@ -38,6 +43,7 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: null,
     currentPrice: "2.6 ETH",
     img: "./img/edwin-dining-chair.png",
+    imgSm: "./img/edwin-dining-chair-sm.png",
   },
   {
     name: "aria dining chair",
@@ -45,6 +51,7 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: null,
     currentPrice: "2.6 ETH",
     img: "./img/aria-dining-chair.png",
+    imgSm: "./img/aria-dining-chair-sm.png",
   },
   {
     name: "sydney armchair",
@@ -52,6 +59,7 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: null,
     currentPrice: "2.6 ETH",
     img: "./img/sydney-armchair.png",
+    imgSm: "./img/sydney-armchair-sm.png",
   },
   {
     name: "oxley coffe table",
@@ -59,26 +67,28 @@ const CURATED_ASSETS: CuratedItemType[] = [
     bidEnded: null,
     currentPrice: "2.6 ETH",
     img: "./img/oxley-coffe-table.png",
+    imgSm: "./img/oxley-coffe-table-sm.png",
   },
 ];
 
 function CuratedItem(props: CuratedItemType) {
-  const itemNameClass = "uppercase text-[20px] font-medium text-5";
-  const itemPriceClass = "font-inter";
+  const itemNameClass =
+    "uppercase text-[16px] md:text-[20px] font-medium text-5";
+  const itemPriceClass = "font-inter text-[#555]";
   return (
     <div>
-      <img src={props.img} alt={props.name} />
-      <div className="flex flex-wrap items-center justify-between mt-5 gap-2.5">
+      <Picture smSrc={props.imgSm} mdSrc={props.img} alt={props.name} />
+      <div className="flex flex-wrap flex-col md:flex-row items-center justify-between mt-5 gap-2.5">
         <p className={itemNameClass}>{props.name}</p>
         <div className="flex">
           {props.currentBid && (
-            <p className={`${itemPriceClass} px-[7.5px]`}>
+            <p className={`${itemPriceClass} pr-7.5 md:px-[7.5px]`}>
               Current Bid :{" "}
               <span className="font-bold">{props.currentBid || "-"}</span>
             </p>
           )}
           {props.bidEnded && (
-            <p className={`${itemPriceClass} px-[7.5px] border-l`}>
+            <p className={`${itemPriceClass} pl-7.5 md:px-[7.5px] border-l`}>
               Auction Ends :{" "}
               <span className="font-bold">{props.bidEnded || "-"}</span>{" "}
             </p>
@@ -98,43 +108,45 @@ function CuratedItem(props: CuratedItemType) {
 
 export default function HomeCollection() {
   return (
-    <SectionWrapper className="md:py-25 md:px-10">
-      <div>
-        <SectionName>collection</SectionName>
-        <h2 className="capitalize font-medium text-[48px] ">
+    <SectionWrapper className="pt-0 pb-0 md:py-25 px-0 md:px-10 bg-white border border-[#D9D9D9]">
+      <div className="bg-[#FAF6F3] pt-10 md:pt-0 px-4 md:px-0">
+        <SectionName className="text-center md:text-left">
+          collection
+        </SectionName>
+        <h2 className="capitalize font-medium text-[28px] md:text-[48px] text-center md:text-left">
           Curated Real-World Assets
         </h2>
-        <p className="max-w-[30em] text-[18px]">
+        <p className="max-w-[30em] text-[12px] md:text-[18px] text-center md:text-left">
           Explore a curated selection of real-world assets, tokenized as NFTs
           and presented through transparent, on-chain auctions.
         </p>
       </div>
-      <div className="py-10">
-        <div className="flex gap-5 mb-20">
-          <div className="basis-1/2">
+      <div className="md:py-10">
+        <div className="mb-2 md:mb-0 bg-[#FAF6F3] px-4 md:px-0 py-6 md:py-0 flex flex-col md:grid md:grid-cols-4 md:grid-rows-5  gap-8 md:gap-5 ">
+          <div className="md:col-span-2 md:row-span-5">
             <CuratedItem {...CURATED_ASSETS[0]} />
           </div>
-          <div className="basis-1/2 flex flex-col justify-between pb-[2.5em]">
-            <div className="flex gap-5">
-              <CuratedItem {...CURATED_ASSETS[1]} />
-              <CuratedItem {...CURATED_ASSETS[2]} />
-            </div>
-            <p className="text-[18px] text-[#363636]">
-              Each asset is supported by verified documentation, detailed
-              provenance records, and transparent on-chain ownership—ensuring
-              authenticity, trust, and confidence throughout the auction
-              process.
-            </p>
+
+          <div className="md:row-span-3 md:col-start-3 md:row-start-1">
+            <CuratedItem {...CURATED_ASSETS[1]} />
           </div>
+          <div className="md:row-span-3 md:col-start-4 md:row-start-1">
+            <CuratedItem {...CURATED_ASSETS[2]} />
+          </div>
+          <p className="text-[12px] md:text-[18px] text-center md:text-left text-[#363636] col-span-2  md:col-start-3 row-start-13 md:row-start-4  md:mt-auto">
+            Each asset is supported by verified documentation, detailed
+            provenance records, and transparent on-chain ownership—ensuring
+            authenticity, trust, and confidence throughout the auction process.
+          </p>
         </div>
-        <div className="flex gap-5">
+        <div className="px-4 md:px-0 pb-6 md:pb-0 pt-4 md:pt-0 bg-[#FAF6F3] flex gap-5 flex-col md:flex-row">
           {CURATED_ASSETS.slice(-4).map((asset, i) => (
             <CuratedItem key={i} {...asset} />
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex gap-4 items-center">
+      <div className="flex pb-6 md:pb-0 px-4 md:px-0 items-center justify-between bg-[#FAF6F3]">
+        <div className="flex  gap-4 items-center">
           <Button className="border bg-transparent p-3 border-[#00000010]">
             <img className="w-5" src="./img/chevron-left.png" />
           </Button>
