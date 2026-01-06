@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../primitive/Button";
 import { twMerge } from "tailwind-merge";
+import SectionName from "../primitive/SectionName";
 
 function FirstSection() {
   const DETAILS = [
@@ -24,9 +25,7 @@ function FirstSection() {
   return (
     <section className="py-20 pr-10">
       <div className="pl-10 mb-10">
-        <p className="uppercase font-inter font-medium text-[18px] opacity-60">
-          key metrics
-        </p>
+        <SectionName>key metrics</SectionName>
         <h2 className="font-medium text-[40px] capitalize">
           platform at a glance
         </h2>

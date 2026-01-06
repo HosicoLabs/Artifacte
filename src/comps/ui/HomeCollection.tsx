@@ -1,4 +1,5 @@
 import Button from "../primitive/Button";
+import SectionName from "../primitive/SectionName";
 import SectionWrapper from "../primitive/SectionWrapper";
 
 type CuratedItemType = {
@@ -99,9 +100,7 @@ export default function HomeCollection() {
   return (
     <SectionWrapper className="md:py-25 md:px-10">
       <div>
-        <p className="uppercase font-medium font-inter text-[18px] opacity-60">
-          collection
-        </p>
+        <SectionName>collection</SectionName>
         <h2 className="capitalize font-medium text-[48px] ">
           Curated Real-World Assets
         </h2>

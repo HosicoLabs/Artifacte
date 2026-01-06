@@ -1,13 +1,14 @@
 import Link from "next/link";
 import SectionWrapper from "../primitive/SectionWrapper";
 import Picture from "../primitive/Picture";
+import SectionName from "../primitive/SectionName";
 
 export default function HomeAboutUs() {
   return (
     <SectionWrapper className="md:bg-white md:px-10 md:py-30">
-      <p className="uppercase font-inter text-lg md:text-[18px] font-medium opacity-60 mb-4 text-center md:text-left">
+      <SectionName className="mb-4 text-center md:text-left ">
         about us
-      </p>
+      </SectionName>
       <div className="flex flex-col md:flex-row items-end justify-between mb-3 md:mb-10 gap-3">
         <h2 className="tracking-[-2%] font-medium font-inter text-2xl md:text-[40px] basis-1/2 leading-[120%] max-w-[19em] text-center md:text-left">
           Curating <span className="text-[#6C737F]">Real-World Assets</span> To
