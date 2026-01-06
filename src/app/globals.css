@@ -39,13 +39,13 @@
 /* Font Inter */
 @font-face {
   font-family: "Inter";
-  src: url("/font/Inter/Inter_18pt-Regular.ttf.ttf") format("truetype");
+  src: url("/font/Inter/Inter_18pt-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/font/Inter/Inter_18pt-Medium.ttf.ttf") format("truetype");
+  src: url("/font/Inter/Inter_18pt-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
