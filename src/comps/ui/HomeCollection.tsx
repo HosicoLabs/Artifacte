@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import Button from "../primitive/Button";
 import Picture from "../primitive/Picture";
 import SectionName from "../primitive/SectionName";
@@ -74,22 +75,32 @@ const CURATED_ASSETS: CuratedItemType[] = [
 function CuratedItem(props: CuratedItemType) {
   const itemNameClass =
     "uppercase text-[16px] md:text-[20px] font-medium text-5";
-  const itemPriceClass = "font-inter text-[#555]";
+  const itemPriceClass = "font-inter text-[#555] tracking-[-5%] leading-[150%]";
+  const dividerClass = `relative after:absolute after:h-[1em] after:top-[50%] after:left-[50%] after:w-px after:z-10 after:translate-x-[50%] after:translate-y-[-50%]`;
   return (
     <div>
       <Picture smSrc={props.imgSm} mdSrc={props.img} alt={props.name} />
-      <div className="flex flex-wrap flex-col md:flex-row items-center justify-between mt-5 gap-2.5">
+      <div className="flex flex-wrap flex-col md:flex-row items-center justify-between mt-4 md:mt-5 gap-2 md:gap-2.5">
         <p className={itemNameClass}>{props.name}</p>
-        <div className="flex">
+        <div
+          className={twMerge(
+            "flex grow w-full items-center ",
+            dividerClass,
+            props.currentBid != null ? "justify-between" : "justify-center",
+            props.currentBid != null
+              ? "after:bg-[#555]"
+              : "after:bg-transparent"
+          )}
+        >
           {props.currentBid && (
-            <p className={`${itemPriceClass} pr-7.5 md:px-[7.5px]`}>
-              Current Bid :{" "}
+            <p className={`${itemPriceClass}`}>
+              Current Bid:{" "}
               <span className="font-bold">{props.currentBid || "-"}</span>
             </p>
           )}
           {props.bidEnded && (
-            <p className={`${itemPriceClass} pl-7.5 md:px-[7.5px] border-l`}>
-              Auction Ends :{" "}
+            <p className={`${itemPriceClass}`}>
+              Auction Ends:{" "}
               <span className="font-bold">{props.bidEnded || "-"}</span>{" "}
             </p>
           )}
@@ -139,7 +150,7 @@ export default function HomeCollection() {
             authenticity, trust, and confidence throughout the auction process.
           </p>
         </div>
-        <div className="px-4 md:px-0 pb-6 md:pb-0 pt-4 md:pt-0 bg-[#FAF6F3] flex gap-5 flex-col md:flex-row">
+        <div className="px-4 md:px-0 pb-6 md:pb-0 pt-4 md:pt-0 bg-[#FAF6F3] flex gap-6 md:gap-5 flex-col md:flex-row">
           {CURATED_ASSETS.slice(-4).map((asset, i) => (
             <CuratedItem key={i} {...asset} />
           ))}
