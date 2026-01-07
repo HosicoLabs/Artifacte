@@ -32,12 +32,12 @@ function FirstSection() {
       </div>
 
       <div className="flex gap-10 ">
-        <div
-          className="relative bg-cover bg-no-repeat grow"
-          style={{
-            background: "url(/img/home-key-metrices.png)",
-          }}
-        >
+        <div className="relative grow">
+          <img
+            className="absolute top-0 left-0 z-[-1] pointer-events-none brightness-80"
+            src="./img/home-key-metrices.png"
+            alt=""
+          />
           <div className=" p-10 flex flex-col justify-end h-full">
             <p className="text-[36px] leading-[130%] text-white mb-15 capitalize max-w-[18em]">
               Built for assets that require confidence, discretion, and
@@ -50,13 +50,13 @@ function FirstSection() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col divide-y divide-[#d9d9d9] basis-1/4">
+        <div className="flex flex-col divide-y divide-[#d9d9d9] max-w-[30em]">
           {DETAILS.map((item, i) => {
             return (
               <div key={i} className=" py-8">
                 <p className="text-[64px] mb-3">{item.value}</p>
-                <p className="mb-3 font-medium text-2xl">{item.title}</p>
-                <p className="font-light text-xl">{item.desc}</p>
+                <p className="mb-3 font-medium text-[24px]">{item.title}</p>
+                <p className="font-light text-[20px]">{item.desc}</p>
               </div>
             );
           })}
