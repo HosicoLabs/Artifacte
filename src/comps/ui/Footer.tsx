@@ -36,7 +36,7 @@ const NAVIGATION_LINKS = [
 export default function Footer() {
   const optClass = "px-3";
   return (
-    <SectionWrapper className="px-10 py-6">
+    <SectionWrapper className="md:px-10 md:pb-10 md:pt-0">
       <ul className="flex gap-5 items-center py-10">
         {NAVIGATION_LINKS.map((link, i) => (
           <Link key={i} className="capitalize" href={link.href}>
