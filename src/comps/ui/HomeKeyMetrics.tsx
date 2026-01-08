@@ -33,9 +33,9 @@ function FirstSection() {
       </div>
 
       <div className="flex gap-10 ">
-        <div className="relative grow">
+        <div className="relative grow overflow-hidden">
           <img
-            className="absolute top-0 left-0 z-1 pointer-events-none brightness-80"
+            className="absolute top-0 left-0 z-1 pointer-events-none brightness-80 block min-w-full max-w-full min-h-full max-h-full object-cover"
             src="./img/home-key-metrices.png"
             alt=""
           />
@@ -51,13 +51,24 @@ function FirstSection() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col divide-y divide-[#d9d9d9] max-w-[30em]">
+        <div className="flex flex-col divide-y divide-[#d9d9d9]">
           {DETAILS.map((item, i) => {
             return (
-              <div key={i} className=" py-8">
-                <p className="text-[64px] mb-3">{item.value}</p>
-                <p className="mb-3 font-medium text-[24px]">{item.title}</p>
-                <p className="font-light text-[20px]">{item.desc}</p>
+              <div
+                key={i}
+                className={`${
+                  i == 0 ? "pb-8" : i == DETAILS.length - 1 ? "pt-7" : "py-8"
+                }`}
+              >
+                <p className="text-[64px] mb-3 leading-[120%] tracking-[-2%]">
+                  {item.value}
+                </p>
+                <p className="mb-3 font-medium text-[24px] leading-[150%] tracking-[-2%]">
+                  {item.title}
+                </p>
+                <p className="font-light text-[20px] max-w-[20em] leading-[150%] tracking-[-2%]">
+                  {item.desc}
+                </p>
               </div>
             );
           })}
@@ -99,11 +110,11 @@ function SecondSection() {
 
   return (
     <SectionWrapper className="flex justify-between  items-start">
-      <div className="max-w-[31%]">
-        <h2 className="font-medium text-[40px] pb-6">
+      <div>
+        <h2 className="font-medium text-[40px] pb-6 max-w-[13em]">
           How to Submit Real-World Asset NFTs for Auction
         </h2>
-        <p className="text-xl">
+        <p className="text-xl max-w-[30em]">
           List your real-world assets as NFTs in just a few simple steps—
           secure, transparent, and globally accessible.
         </p>
@@ -127,7 +138,9 @@ function SecondSection() {
                   <p className="mb-3 font-medium text-xl capitalize">
                     {item.title}
                   </p>
-                  <p className="text-xl text-[#6C737F]">{item.desc}</p>
+                  <p className="text-xl text-[#6C737F] max-w-[25em]">
+                    {item.desc}
+                  </p>
                 </div>
               </li>
             );
