@@ -5,7 +5,7 @@ import SectionName from "../primitive/SectionName";
 
 export default function HomeAboutUs() {
   return (
-    <SectionWrapper className="md:bg-white md:px-10 md:py-30 border border-[#D9D9D9]">
+    <SectionWrapper className="bg-[#FAF6F3] md:bg-white md:px-10 md:py-30 border border-[#D9D9D9] md:border-transparent">
       <SectionName className="mb-4 text-center md:text-left ">
         about us
       </SectionName>

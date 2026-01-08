@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SectionWrapper from "../primitive/SectionWrapper";
 
 const SOCIAL_MEDIA = [
   {
@@ -35,7 +36,7 @@ const NAVIGATION_LINKS = [
 export default function Footer() {
   const optClass = "px-3";
   return (
-    <footer className="px-10 py-6">
+    <SectionWrapper className="px-10 py-6">
       <ul className="flex gap-5 items-center py-10">
         {NAVIGATION_LINKS.map((link, i) => (
           <Link key={i} className="capitalize" href={link.href}>
@@ -77,6 +78,6 @@ export default function Footer() {
           <li className={`${optClass}`}>Risk Disclosure</li>
         </ul>
       </div>
-    </footer>
+    </SectionWrapper>
   );
 }

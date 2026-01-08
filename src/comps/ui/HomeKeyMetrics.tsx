@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../primitive/Button";
 import { twMerge } from "tailwind-merge";
 import SectionName from "../primitive/SectionName";
+import SectionWrapper from "../primitive/SectionWrapper";
 
 function FirstSection() {
   const DETAILS = [
@@ -23,7 +24,7 @@ function FirstSection() {
     },
   ];
   return (
-    <section className="py-20 pr-10">
+    <SectionWrapper className="pr-10 md:pl-0 ">
       <div className="pl-10 mb-10">
         <SectionName>key metrics</SectionName>
         <h2 className="font-medium text-[40px] capitalize">
@@ -34,11 +35,11 @@ function FirstSection() {
       <div className="flex gap-10 ">
         <div className="relative grow">
           <img
-            className="absolute top-0 left-0 z-[-1] pointer-events-none brightness-80"
+            className="absolute top-0 left-0 z-1 pointer-events-none brightness-80"
             src="./img/home-key-metrices.png"
             alt=""
           />
-          <div className=" p-10 flex flex-col justify-end h-full">
+          <div className=" p-10 flex flex-col justify-end h-full relative z-2">
             <p className="text-[36px] leading-[130%] text-white mb-15 capitalize max-w-[18em]">
               Built for assets that require confidence, discretion, and
               long-term perspective — not short-term speculation.
@@ -62,7 +63,7 @@ function FirstSection() {
           })}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
@@ -97,7 +98,7 @@ function SecondSection() {
   ];
 
   return (
-    <section className="flex justify-between px-10 py-20 items-start">
+    <SectionWrapper className="flex justify-between  items-start">
       <div className="max-w-[31%]">
         <h2 className="font-medium text-[40px] pb-6">
           How to Submit Real-World Asset NFTs for Auction
@@ -140,7 +141,7 @@ function SecondSection() {
         src="./img/home-key-metrices-bot.png"
         alt=""
       />
-    </section>
+    </SectionWrapper>
   );
 }
 

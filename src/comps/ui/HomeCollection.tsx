@@ -84,9 +84,11 @@ function CuratedItem(props: CuratedItemType) {
         <p className={itemNameClass}>{props.name}</p>
         <div
           className={twMerge(
-            "flex grow w-full items-center ",
+            "flex grow w-full items-center",
             dividerClass,
-            props.currentBid != null ? "justify-between" : "justify-center",
+            props.currentBid != null
+              ? "justify-between md:pr-4"
+              : "justify-center md:justify-start ",
             props.currentBid != null
               ? "after:bg-[#555]"
               : "after:bg-transparent"
@@ -119,8 +121,8 @@ function CuratedItem(props: CuratedItemType) {
 
 export default function HomeCollection() {
   return (
-    <SectionWrapper className="pt-0 pb-0 md:py-25 px-0 md:px-10 bg-white border border-[#D9D9D9]">
-      <div className="bg-[#FAF6F3] pt-10 md:pt-0 px-4 md:px-0">
+    <SectionWrapper className="pt-0 pb-0 md:py-25 px-0 md:px-10 bg-white border border-[#D9D9D9] md:border-transparent ">
+      <div className="bg-[#FAF6F3] md:bg-transparent  pt-10 md:pt-0 px-4 md:px-0">
         <SectionName className="text-center md:text-left">
           collection
         </SectionName>
@@ -133,7 +135,7 @@ export default function HomeCollection() {
         </p>
       </div>
       <div className="md:py-10">
-        <div className="mb-2 md:mb-0 bg-[#FAF6F3] px-4 md:px-0 py-6 md:py-0 flex flex-col md:grid md:grid-cols-4 md:grid-rows-5  gap-8 md:gap-5 ">
+        <div className="mb-2 md:mb-0 bg-[#FAF6F3] md:bg-transparent px-4 md:px-0 py-6 md:py-0 flex flex-col md:grid md:grid-cols-4 md:grid-rows-5  gap-8 md:gap-5 ">
           <div className="md:col-span-2 md:row-span-5">
             <CuratedItem {...CURATED_ASSETS[0]} />
           </div>
@@ -150,13 +152,13 @@ export default function HomeCollection() {
             authenticity, trust, and confidence throughout the auction process.
           </p>
         </div>
-        <div className="px-4 md:px-0 pb-6 md:pb-0 pt-4 md:pt-0 bg-[#FAF6F3] flex gap-6 md:gap-5 flex-col md:flex-row">
+        <div className="px-4 md:px-0 pb-6 md:pb-0 pt-4 md:pt-0 bg-[#FAF6F3] md:bg-transparent flex gap-6 md:gap-5 flex-col md:flex-row">
           {CURATED_ASSETS.slice(-4).map((asset, i) => (
             <CuratedItem key={i} {...asset} />
           ))}
         </div>
       </div>
-      <div className="flex pb-6 md:pb-0 px-4 md:px-0 items-center justify-between bg-[#FAF6F3]">
+      <div className="flex pb-6 md:pb-0 px-4 md:px-0 items-center justify-between bg-[#FAF6F3] md:bg-transparent ">
         <div className="flex  gap-4 items-center">
           <Button className="border bg-transparent p-3 border-[#00000010]">
             <img className="w-5" src="./img/chevron-left.png" />

@@ -1,8 +1,9 @@
 import Button from "../primitive/Button";
+import SectionWrapper from "../primitive/SectionWrapper";
 
 export default function HomeValues() {
   return (
-    <section className="pl-10 py-20 flex gap-10 items-end justify-between">
+    <SectionWrapper className="md:pr-0 flex gap-10 items-end justify-between">
       <div>
         <p className="text-[20px]">values</p>
         <p className="text-[#6C737F] text-[20px] mt-75">
@@ -36,6 +37,6 @@ export default function HomeValues() {
         </h2>
         <img src="./img/home-values.png" />
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
