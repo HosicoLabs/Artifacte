@@ -150,7 +150,7 @@ function SecondSection() {
         <Button className="text-white bg-[#162737]">submit now</Button>
       </div>
       <img
-        className="basis-1/2 max-w-[55%]"
+        className="basis-1/2 max-w-[53%]"
         src="./img/home-key-metrices-bot.png"
         alt=""
       />
