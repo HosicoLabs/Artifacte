@@ -10,13 +10,13 @@ export default function HomeAboutUs() {
         about us
       </SectionName>
       <div className="flex flex-col md:flex-row items-end justify-between mb-3 md:mb-10 gap-3">
-        <h2 className="tracking-[-2%] font-medium font-inter text-2xl md:text-[40px] basis-1/2 leading-[120%] max-w-[19em] text-center md:text-left">
+        <h2 className="font-medium font-inter text-2xl md:text-[40px] leading-[120%] max-w-[19em] tracking-[-5%] text-center md:text-left">
           Curating <span className="text-[#6C737F]">Real-World Assets</span> To
           Shape The Future Of Ownership Through
-          <span className="text-[#6C737F]">Transparent</span> And{" "}
-          <span className="text-[#6C737F]">Trusted Auctions.</span>
+          <span className="text-[#6C737F]"> Transparent</span> And
+          <span className="text-[#6C737F]"> Trusted Auctions.</span>
         </h2>
-        <p className="text-[13px] md:text-[18px] basis-1/2 max-w-[35em]  text-center md:text-left">
+        <p className="text-[13px] md:text-[18px] basis-1/2 md:max-w-[45em] text-center md:text-left">
           We curate and auction real-world assets as NFTs, ensuring verified
           provenance, transparent auctions, and secure ownership worldwide.
         </p>
