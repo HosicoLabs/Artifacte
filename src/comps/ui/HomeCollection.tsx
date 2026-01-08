@@ -13,6 +13,10 @@ type CuratedItemType = {
   currentPrice: string | null;
 };
 
+type CuratedItemProps = CuratedItemType & {
+  wrap?: boolean;
+};
+
 const CURATED_ASSETS: CuratedItemType[] = [
   {
     name: "oakwood cabinet (1960s)",
@@ -72,45 +76,58 @@ const CURATED_ASSETS: CuratedItemType[] = [
   },
 ];
 
-function CuratedItem(props: CuratedItemType) {
+function CuratedItem({
+  img,
+  name,
+  imgSm,
+  currentBid,
+  currentPrice,
+  bidEnded,
+  wrap = true,
+}: CuratedItemProps) {
+  const detailBaseClass =
+    "flex  flex-col md:flex-row items-center justify-between mt-4 md:mt-5 gap-2 md:gap-2.5";
   const itemNameClass =
     "uppercase text-[16px] md:text-[20px] font-medium text-5";
   const itemPriceClass = "font-inter text-[#555] tracking-[-5%] leading-[150%]";
   const dividerClass = `relative after:absolute after:h-[1em] after:top-[50%] after:left-[50%] after:w-px after:z-10 after:translate-x-[50%] after:translate-y-[-50%]`;
+
+  const detailClass = twMerge(
+    detailBaseClass,
+    wrap ? "md:gap-0 flex-wrap" : "md:gap-[5vw]"
+  );
   return (
     <div>
-      <Picture smSrc={props.imgSm} mdSrc={props.img} alt={props.name} />
-      <div className="flex flex-wrap flex-col md:flex-row items-center justify-between mt-4 md:mt-5 gap-2 md:gap-2.5">
-        <p className={itemNameClass}>{props.name}</p>
+      <Picture smSrc={imgSm} mdSrc={img} alt={name} />
+      <div className={detailClass}>
+        <p className={itemNameClass}>{name}</p>
         <div
           className={twMerge(
-            "flex grow w-full items-center",
+            "flex grow items-center",
             dividerClass,
-            props.currentBid != null
-              ? "justify-between md:pr-4"
+            currentBid != null
+              ? "justify-between "
               : "justify-center md:justify-start ",
-            props.currentBid != null
-              ? "after:bg-[#555]"
-              : "after:bg-transparent"
+            currentBid != null ? "after:bg-[#555]" : "after:bg-transparent",
+            wrap ? " w-full" : "w-fit"
           )}
         >
-          {props.currentBid && (
+          {currentBid && (
             <p className={`${itemPriceClass}`}>
               Current Bid:{" "}
-              <span className="font-bold">{props.currentBid || "-"}</span>
+              <span className="font-bold">{currentBid || "-"}</span>
             </p>
           )}
-          {props.bidEnded && (
+          {bidEnded && (
             <p className={`${itemPriceClass}`}>
-              Auction Ends:{" "}
-              <span className="font-bold">{props.bidEnded || "-"}</span>{" "}
+              Auction Ends: <span className="font-bold">{bidEnded || "-"}</span>{" "}
             </p>
           )}
 
-          {props.currentPrice && (
+          {currentPrice && (
             <p className={itemPriceClass}>
               Current Price :{" "}
-              <span className="font-bold">{props.currentPrice || "-"}</span>{" "}
+              <span className="font-bold">{currentPrice || "-"}</span>{" "}
             </p>
           )}
         </div>
@@ -134,10 +151,10 @@ export default function HomeCollection() {
           and presented through transparent, on-chain auctions.
         </p>
       </div>
-      <div className="md:py-10">
-        <div className="mb-2 md:mb-0 bg-[#FAF6F3] md:bg-transparent px-4 md:px-0 py-6 md:py-0 flex flex-col md:grid md:grid-cols-4 md:grid-rows-5  gap-8 md:gap-5 ">
+      <div className="md:py-10 ">
+        <div className="mb-2 bg-[#FAF6F3] md:bg-transparent px-4 md:px-0 py-6 md:py-0 flex flex-col md:grid md:grid-cols-4 md:grid-rows-5  gap-8 md:gap-5 md:mb-20 ">
           <div className="md:col-span-2 md:row-span-5">
-            <CuratedItem {...CURATED_ASSETS[0]} />
+            <CuratedItem wrap={false} {...CURATED_ASSETS[0]} />
           </div>
 
           <div className="md:row-span-3 md:col-start-3 md:row-start-1">
