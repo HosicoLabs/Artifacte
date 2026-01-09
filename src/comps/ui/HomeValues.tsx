@@ -3,7 +3,7 @@ import SectionWrapper from "../primitive/SectionWrapper";
 
 export default function HomeValues() {
   return (
-    <SectionWrapper className="md:pr-0 flex gap-10 items-end justify-between">
+    <SectionWrapper className="hidden md:flex gap-10 items-end justify-between md:pr-0">
       <div>
         <p className="text-[20px]">values</p>
         <p className="text-[#6C737F] text-[20px] mt-75">
