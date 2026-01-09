@@ -4,6 +4,7 @@ import Button from "../primitive/Button";
 import { twMerge } from "tailwind-merge";
 import SectionName from "../primitive/SectionName";
 import SectionWrapper from "../primitive/SectionWrapper";
+import Picture from "../primitive/Picture";
 
 function FirstSection() {
   const DETAILS = [
@@ -24,49 +25,56 @@ function FirstSection() {
     },
   ];
   return (
-    <SectionWrapper className="pr-10 md:pl-0 ">
-      <div className="pl-10 mb-10">
+    <SectionWrapper className="md:pr-10 md:pl-0 bg-[#FAF6F3] md:bg-white border border-[#D9D9D9] md:border-transparent">
+      <div className="md:pl-10 mb-6 md:mb-10 flex flex-col items-center md:items-start">
         <SectionName>key metrics</SectionName>
-        <h2 className="font-medium text-[40px] capitalize">
+        <h2 className="font-medium text-2xl md:text-[40px] capitalize">
           platform at a glance
         </h2>
       </div>
 
-      <div className="flex gap-10 ">
+      <div className="flex gap-6 md:gap-10 flex-col md:flex-row">
         <div className="relative grow overflow-hidden">
-          <img
+          <Picture
+            smSrc="./img/home-key-metrices-sm.png"
+            mdSrc="./img/home-key-metrices.png"
             className="absolute top-0 left-0 z-1 pointer-events-none brightness-80 block min-w-full max-w-full min-h-full max-h-full object-cover"
-            src="./img/home-key-metrices.png"
-            alt=""
           />
-          <div className=" p-10 flex flex-col justify-end h-full relative z-2">
-            <p className="text-[36px] leading-[130%] text-white mb-15 capitalize max-w-[18em]">
+
+          <div className="p-3.75 mt-31.75 md:mt-0 md:p-10 flex flex-col justify-end h-full relative z-2">
+            <p className="text-[13px] md:text-[36px] leading-[130%] text-white mb-5.5 md:mb-15 capitalize max-w-[18em]">
               Built for assets that require confidence, discretion, and
               long-term perspective — not short-term speculation.
             </p>
 
-            <p className="text-white text-xl capitalize">broollyn simmons</p>
-            <p className="text-white text-xl opacity-75 capitalize">
+            <p className="text-white text-xl text-[7px] md:text-[16px] capitalize">
+              broollyn simmons
+            </p>
+            <p className="text-white text-xl text-[7px] md:text-[16px] opacity-75 capitalize">
               on twitter
             </p>
           </div>
         </div>
-        <div className="flex flex-col divide-y divide-[#d9d9d9]">
+        <div className="flex gap-2.75 md:gap-0 md:flex-col md:divide-y md:divide-[#d9d9d9] justify-between">
           {DETAILS.map((item, i) => {
             return (
               <div
                 key={i}
                 className={`${
-                  i == 0 ? "pb-8" : i == DETAILS.length - 1 ? "pt-7" : "py-8"
+                  i == 0
+                    ? "md:pb-8"
+                    : i == DETAILS.length - 1
+                    ? "md:pt-7"
+                    : "md:py-8"
                 }`}
               >
-                <p className="text-[64px] mb-3 leading-[120%] tracking-[-2%]">
+                <p className="mb-1 md:mb-3 text-[21px] md:text-[64px] leading-[120%] tracking-[-2%]">
                   {item.value}
                 </p>
-                <p className="mb-3 font-medium text-[24px] leading-[150%] tracking-[-2%]">
+                <p className="mb-1 md:mb-3  text-[8px] md:text-[24px] leading-[150%] tracking-[-2%] font-medium">
                   {item.title}
                 </p>
-                <p className="font-light text-[20px] max-w-[20em] leading-[150%] tracking-[-2%]">
+                <p className="text-[6.75px] md:text-[20px] leading-[150%] tracking-[-2%]  max-w-[20em] font-light">
                   {item.desc}
                 </p>
               </div>
@@ -109,7 +117,7 @@ function SecondSection() {
   ];
 
   return (
-    <SectionWrapper className="flex justify-between  items-start">
+    <SectionWrapper className="flex justify-between  items-start bg-[#FAF6F3] md:bg-white border border-[#D9D9D9] md:border-transparent">
       <div>
         <h2 className="font-medium text-[40px] pb-6 max-w-[13em]">
           How to Submit Real-World Asset NFTs for Auction
