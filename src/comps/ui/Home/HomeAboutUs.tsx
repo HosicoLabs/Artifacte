@@ -1,7 +1,7 @@
 import Link from "next/link";
-import SectionWrapper from "../primitive/SectionWrapper";
-import Picture from "../primitive/Picture";
-import SectionName from "../primitive/SectionName";
+import SectionWrapper from "../../primitive/SectionWrapper";
+import Picture from "../../primitive/Picture";
+import SectionName from "../../primitive/SectionName";
 
 export default function HomeAboutUs() {
   return (

@@ -1,6 +1,6 @@
-import Button from "../primitive/Button";
-import Picture from "../primitive/Picture";
-import SectionWrapper from "../primitive/SectionWrapper";
+import Button from "../../primitive/Button";
+import Picture from "../../primitive/Picture";
+import SectionWrapper from "../../primitive/SectionWrapper";
 
 export default function HomeValues() {
   return (

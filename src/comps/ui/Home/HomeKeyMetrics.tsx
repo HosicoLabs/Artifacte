@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import Button from "../primitive/Button";
+import Button from "../../primitive/Button";
 import { twMerge } from "tailwind-merge";
-import SectionName from "../primitive/SectionName";
-import SectionWrapper from "../primitive/SectionWrapper";
-import Picture from "../primitive/Picture";
+import SectionName from "../../primitive/SectionName";
+import SectionWrapper from "../../primitive/SectionWrapper";
+import Picture from "../../primitive/Picture";
 
 function FirstSection() {
   const DETAILS = [

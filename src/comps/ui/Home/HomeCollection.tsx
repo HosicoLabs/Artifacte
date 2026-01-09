@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
-import Button from "../primitive/Button";
-import Picture from "../primitive/Picture";
-import SectionName from "../primitive/SectionName";
-import SectionWrapper from "../primitive/SectionWrapper";
+import Button from "../../primitive/Button";
+import Picture from "../../primitive/Picture";
+import SectionName from "../../primitive/SectionName";
+import SectionWrapper from "../../primitive/SectionWrapper";
 
 type CuratedItemType = {
   name: string;

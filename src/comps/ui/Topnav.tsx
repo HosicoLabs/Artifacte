@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Button from "../primitive/Button";
 import Picture from "../primitive/Picture";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const URLS = [
   {
@@ -10,7 +10,7 @@ const URLS = [
     label: "live auctions",
   },
   {
-    href: "#",
+    href: "/collections",
     label: "collections",
   },
   {
