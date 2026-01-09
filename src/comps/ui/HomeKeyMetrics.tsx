@@ -117,16 +117,16 @@ function SecondSection() {
   ];
 
   return (
-    <SectionWrapper className="flex justify-between  items-start bg-[#FAF6F3] md:bg-white border border-[#D9D9D9] md:border-transparent">
+    <SectionWrapper className="flex flex-col-reverse md:flex-row justify-between items-start bg-[#FAF6F3] md:bg-white border border-[#D9D9D9] md:border-transparent gap-6 pt-4 md:pt-20">
       <div>
-        <h2 className="font-medium text-[40px] pb-6 max-w-[13em]">
+        <h2 className="font-medium text-2xl md:text-[40px] pb-3 md:pb-6 max-w-[13em] text-center md:text-left">
           How to Submit Real-World Asset NFTs for Auction
         </h2>
-        <p className="text-xl max-w-[30em]">
+        <p className="text-[12px] md:text-xl max-w-[30em] text-center md:text-left">
           List your real-world assets as NFTs in just a few simple steps—
           secure, transparent, and globally accessible.
         </p>
-        <ul className="pt-10 pb-20">
+        <ul className="pt-6 md:pt-10 pb-6 md:pb-20">
           {STEPS.map((item, i) => {
             const defaultClass =
               "p-5 border-l-2 border-l-[#cccccc] flex items-start gap-4 overflow-hidden max-h-[3em] transition duration-300 ease-in-out";
@@ -143,7 +143,7 @@ function SecondSection() {
               >
                 <img className="w-5" src={item.icon} alt="" />
                 <div>
-                  <p className="mb-3 font-medium text-xl capitalize">
+                  <p className="text-xl mb-3 font-medium capitalize">
                     {item.title}
                   </p>
                   <p className="text-xl text-[#6C737F] max-w-[25em]">
@@ -158,7 +158,7 @@ function SecondSection() {
         <Button className="text-white bg-[#162737]">submit now</Button>
       </div>
       <img
-        className="basis-1/2 max-w-[53%]"
+        className="md:basis-1/2 md:max-w-[53%]"
         src="./img/home-key-metrices-bot.png"
         alt=""
       />
