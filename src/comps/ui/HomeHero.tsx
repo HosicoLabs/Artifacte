@@ -12,7 +12,7 @@ export default function HomeHero() {
         className="brightness-80"
       />
       <div className="absolute z-20 bottom-0 w-full px-2.5 md:px-10 py-6 md:py-16">
-        <h1 className="font-philosopher text-[40px] md:text-[82px] mb-4 md:mb-6 text-white mx-auto md:mx-0 max-w-[9em] md:max-w-[9em] text-center md:text-left">
+        <h1 className="font-philosopher text-[40px] md:text-[82px] mb-4 md:mb-6 text-white mx-auto md:mx-0 max-w-[9em] md:max-w-[9em] text-center md:text-left tracking-[-5%] leading-[100%]">
           Curating the Future of Asset Ownership
         </h1>
         <div className="flex flex-col gap-6 md:flex-row items-center justify-between">
