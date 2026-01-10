@@ -55,6 +55,115 @@ function Pagination() {
   );
 }
 
+type CollectionItemType = {
+  img: string;
+  price: string;
+  edition: string;
+  name: string;
+};
+
+const COLLECTION_ASSETS_LIST: CollectionItemType[] = [
+  {
+    img: "./img/collection-item-1.png",
+    name: "edwin dining chair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-2.png",
+    name: "aria dining chair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-3.png",
+    name: "sydney armchair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-4.png",
+    name: "oxley coffe table",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-5.png",
+    name: "edwin dining chair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-6.png",
+    name: "aria dining chair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-7.png",
+    name: "sydney armchair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-8.png",
+    name: "oxley coffe table",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-9.png",
+    name: "lara armchair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-10.png",
+    name: "noelle modular curved",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-11.png",
+    name: "garret armchair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+  {
+    img: "./img/collection-item-12.png",
+    name: "theodore armchair",
+    edition: "3/50",
+    price: "2.6eth",
+  },
+];
+
+function CollectionItem({ img, name, edition, price }: CollectionItemType) {
+  const detailBaseClass = "flex flex-col  mt-4 md:mt-5 gap-2 md:gap-2.5";
+  const itemNameClass =
+    "uppercase text-[16px] md:text-[20px] font-medium text-5";
+  const itemPriceClass = "font-inter text-[#555] tracking-[-5%] leading-[150%]";
+
+  return (
+    <div className="basis-[calc(25%-20px)]">
+      <img src={img} alt={name} />
+      <div className={detailBaseClass}>
+        <p className={itemNameClass}>{name}</p>
+        <div
+          className={twMerge("flex grow items-center justify-between w-fit")}
+        >
+          <p className={`${itemPriceClass} pr-3 border-r border-r-[#6C737F]`}>
+            Current Price: <span className="font-bold uppercase">{price}</span>
+          </p>
+          <p className={`${itemPriceClass} pl-3`}>
+            Edition:{" "}
+            <span className="font-bold uppercase">{edition || "-"}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CollectionAssets() {
   return (
     <SectionWrapper className="md:px-10 md:py-10">
@@ -87,6 +196,11 @@ export default function CollectionAssets() {
           </DropdownButton>
         </div>
       </div>
+      <ul className="flex flex-wrap gap-x-5 gap-y-10 justify-center mt-10 mb-20">
+        {COLLECTION_ASSETS_LIST.map((item, i) => {
+          return <CollectionItem key={i} {...item} />;
+        })}
+      </ul>
 
       <Pagination />
     </SectionWrapper>

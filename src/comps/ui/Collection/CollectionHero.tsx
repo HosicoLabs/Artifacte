@@ -30,7 +30,7 @@ const ACHIEVEMENT_LIST: Achievement[] = [
 
 export default function CollectionHero() {
   return (
-    <SectionWrapper className="md:px-0 md:py:0">
+    <SectionWrapper className="md:px-0 md:py:0 md:py-0">
       <div className="md:px-10 md:pt-20 md:pb-5">
         <div className="flex justify-between items-center md:mb-10">
           <h1 className="capitalize font-medium md:text-5xl leading-[100%] tracking-[-2%] md:max-w-[10em]">
