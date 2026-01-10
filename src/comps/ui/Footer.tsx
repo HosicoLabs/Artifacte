@@ -65,7 +65,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row items-center md:items-end justify-between mt-22.5 md:mt-0">
+      <div className="flex flex-col md:flex-row items-center md:items-end justify-between mt-22.5 md:mt-10">
         <Link href="#">
           <img
             className="h-20.5 mb-7 md:mb-0"
