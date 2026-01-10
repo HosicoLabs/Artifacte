@@ -36,6 +36,15 @@
   font-style: normal;
 }
 
+/* Font Space Grotesk */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/font/Space_Grotesk/static/SpaceGrotesk-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 /* Font Inter */
 @font-face {
   font-family: "Inter";
@@ -50,6 +59,14 @@
   font-style: normal;
 }
 
+/* Font Satoshi */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/font/Satoshi/Satoshi-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -57,6 +74,8 @@
   --philosopher-font: "philosopher", sans-serif;
   --geist-font: "Geist", sans-serif;
   --inter-font: "Inter", sans-serif;
+  --satoshi-font: "Satoshi", sans-serif;
+  --grotesk-font: "Space Grotesk", sans-serif;
 }
 
 @theme {
@@ -65,6 +84,11 @@
   --font-philosopher: var(--philosopher-font);
   --font-geist: var(--geist-font);
   --font-inter: var(--inter-font);
+  --font-satoshi: var(--satoshi-font);
+  --font-grotesk: var(--grotesk-font);
+
+  /* color */
+  --color-gray-500: #6c737f;
 }
 
 body {
