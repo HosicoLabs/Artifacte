@@ -60,7 +60,7 @@ export default function CollectionHero() {
       </ul>
       <img
         src="./img/collection_hero.webp"
-        className="max-w-screen"
+        className="max-w-full"
         alt="artifacte"
       />
     </SectionWrapper>
