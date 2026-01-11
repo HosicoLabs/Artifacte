@@ -1,3 +1,4 @@
+"use client";
 import { ComponentProps, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -9,6 +10,8 @@ type ButtonProps = {
 export default function Button({
   children,
   className = "",
+  type = "button",
+  onClick,
   ...rest
 }: ButtonProps) {
   const baseClass =
@@ -17,7 +20,7 @@ export default function Button({
 
   const buttonClass = twMerge(baseClass, customClass);
   return (
-    <button className={buttonClass} {...rest}>
+    <button className={buttonClass} onClick={onClick} type={type} {...rest}>
       {children}
     </button>
   );

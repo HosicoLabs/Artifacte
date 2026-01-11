@@ -1,7 +1,9 @@
+"use client";
+
 import Button from "@/comps/primitive/Button";
 import SectionWrapper from "@/comps/primitive/SectionWrapper";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import CollectionItemPopup from "./CollectionPopup";
 
@@ -61,6 +63,10 @@ type CollectionItemType = {
   price: string;
   edition: string;
   name: string;
+};
+
+type CollectionItemProps = CollectionItemType & {
+  onClick: () => void;
 };
 
 const COLLECTION_ASSETS_LIST: CollectionItemType[] = [
@@ -138,14 +144,20 @@ const COLLECTION_ASSETS_LIST: CollectionItemType[] = [
   },
 ];
 
-function CollectionItem({ img, name, edition, price }: CollectionItemType) {
+function CollectionItem({
+  img,
+  name,
+  edition,
+  price,
+  onClick,
+}: CollectionItemProps) {
   const detailBaseClass = "flex flex-col  mt-4 md:mt-5 gap-2 md:gap-2.5";
   const itemNameClass =
     "uppercase text-[16px] md:text-[20px] font-medium text-5";
   const itemPriceClass = "font-inter text-[#555] tracking-[-5%] leading-[150%]";
 
   return (
-    <div className="basis-[calc(25%-20px)]">
+    <div className="basis-[calc(25%-20px)]" onClick={onClick}>
       <img src={img} alt={name} />
       <div className={detailBaseClass}>
         <p className={itemNameClass}>{name}</p>
@@ -166,9 +178,10 @@ function CollectionItem({ img, name, edition, price }: CollectionItemType) {
 }
 
 export default function CollectionAssets() {
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <>
-      <CollectionItemPopup open={true} />
+      <CollectionItemPopup open={open} onClose={() => setOpen(() => false)} />
       <SectionWrapper className="md:px-10 md:py-10">
         <form className="bg-white rounded-xl overflow-hidden flex items-center justify-between px-3.5 relative">
           <input
@@ -201,7 +214,13 @@ export default function CollectionAssets() {
         </div>
         <ul className="flex flex-wrap gap-x-5 gap-y-10 justify-center mt-10 mb-20">
           {COLLECTION_ASSETS_LIST.map((item, i) => {
-            return <CollectionItem key={i} {...item} />;
+            return (
+              <CollectionItem
+                onClick={() => setOpen(() => true)}
+                key={i}
+                {...item}
+              />
+            );
           })}
         </ul>
 

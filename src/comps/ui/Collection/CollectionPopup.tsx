@@ -1,13 +1,11 @@
 "use client";
 
 import Button from "@/comps/primitive/Button";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-export type CollectionItemPopupProps = {
-  open?: boolean;
-};
-
-function CollectionItemDetail() {
+function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
+  const [detail, setDetail] = useState<string>("details");
   const COLLECTION_STATS_LIST = [
     {
       label: "list price",
@@ -44,7 +42,7 @@ function CollectionItemDetail() {
 
   return (
     <div className="px-7 pt-5.5">
-      <Button className="block bg-transparent p-0 ml-auto">
+      <Button className="block bg-transparent p-0 ml-auto" onClick={onClose}>
         <img className="w-5.5" src="./img/close-outline.png" alt="" />
       </Button>
 
@@ -116,12 +114,15 @@ function CollectionItemDetail() {
             const buttonClass = "p-0 bg-transparent font-regular";
             const labelClass = "font-inter text-[14px]";
             const colorClass =
-              e == "details"
+              e == detail
                 ? "font-medium text-[#191919]"
                 : "font-regular text-[#857F94]";
             return (
               <li key={i}>
-                <Button className={buttonClass}>
+                <Button
+                  onClick={() => setDetail(() => e)}
+                  className={buttonClass}
+                >
                   <span className={twMerge(labelClass, colorClass)}>{e}</span>
                 </Button>
               </li>
@@ -198,8 +199,14 @@ function CollectionItemStats() {
   );
 }
 
+export type CollectionItemPopupProps = {
+  open?: boolean;
+  onClose?: () => void;
+};
+
 export default function CollectionItemPopup({
   open = false,
+  onClose,
 }: CollectionItemPopupProps) {
   const defaultOverlayClass =
     "fixed z-50 w-full h-full top-0 left-0 bg-[#0A0F2E40] grid items-center";
@@ -217,7 +224,7 @@ export default function CollectionItemPopup({
             src="./img/collection-item-1.png"
             alt=""
           />
-          <CollectionItemDetail />
+          <CollectionItemDetail onClose={onClose} />
         </div>
         <CollectionItemStats />
       </div>
