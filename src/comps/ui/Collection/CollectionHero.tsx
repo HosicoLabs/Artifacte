@@ -1,3 +1,4 @@
+import Picture from "@/comps/primitive/Picture";
 import SectionWrapper from "@/comps/primitive/SectionWrapper";
 
 type Achievement = {
@@ -30,14 +31,14 @@ const ACHIEVEMENT_LIST: Achievement[] = [
 
 export default function CollectionHero() {
   return (
-    <SectionWrapper className="md:px-0 md:py:0 md:py-0">
-      <div className="md:px-10 md:pt-20 md:pb-5">
-        <div className="flex justify-between items-center md:mb-10">
-          <h1 className="capitalize font-medium md:text-5xl leading-[100%] tracking-[-2%] md:max-w-[10em]">
-            curated <br />
+    <SectionWrapper className="md:min-h-auto px-2.5 md:px-0 pt-17 pb-10 md:py-0 relative bg-transparent overflow-hidden flex flex-col justify-between md:block after:block md:after:hidden after:h-[30%] after:w-full after:absolute after:bottom-0 after:left-0 after:pointer-events-none after:bg-linear-to-t after:from-[#00000060] after:to-[#00000000]">
+      <div className="md:px-10 md:pt-20 md:pb-5 mb-110 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 md:mb-10">
+          <h1 className="capitalize font-medium text-4xl md:text-5xl leading-[100%] tracking-[-2%] max-w-[10em] text-center md:text-left">
+            curated <br className="hidden md:inline" />
             on-chain NFT collection
           </h1>
-          <p className="md:text-lg text-[#6C737F] leading-[150%] md:max-w-[38em]">
+          <p className="text-[14px] md:text-lg text-center md:text-left text-[#6C737F] leading-[150%] md:max-w-[38em]">
             Explore a curated collection of NFTs, selected for their conceptual
             depth, visual integrity, and cultural relevance. Each piece is
             presented as a unique on-chain asset, released through transparent
@@ -45,22 +46,28 @@ export default function CollectionHero() {
           </p>
         </div>
       </div>
-      <ul className="md:px-10 md:py-6 flex items-center justify-between border-t border-t-[#ddd]">
+      <ul className="mt-auto md:mt-0 px-7 md:px-10 md:py-6 flex items-center justify-between md:border-t md:border-t-[#ddd] relative z-1">
         {ACHIEVEMENT_LIST.map((achv, i) => {
           return (
-            <li key={i} className="flex flex-col gap-3">
-              <p className="md:text-5xl font-medium">
+            <li
+              key={i}
+              className="flex flex-col gap-3 text-white md:text-black min-w-[50vw] md:min-w-[unset]"
+            >
+              <p className="text-3xl md:text-5xl font-medium">
                 {achv.count}+
                 <span className="font-normal text-[18px] ml-[.5em]">NFTs</span>
               </p>
-              <p className="text-lg text-[#6C737F] ">{achv.desc}</p>
+              <p className="text-lg md:text-[#6C737F] text-[13px] md:text-[16px] text-nowwrap md:text-wrap">
+                {achv.desc}
+              </p>
             </li>
           );
         })}
       </ul>
-      <img
-        src="./img/collection_hero.webp"
-        className="max-w-full"
+      <Picture
+        mdSrc="./img/collection_hero.webp"
+        smSrc="./img/collection_hero_sm.webp"
+        className="max-w-full absolute md:static top-0 left-0 z-[-1] "
         alt="artifacte"
       />
     </SectionWrapper>
