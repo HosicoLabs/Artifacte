@@ -3,6 +3,7 @@ import SectionWrapper from "@/comps/primitive/SectionWrapper";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+import CollectionItemPopup from "./CollectionPopup";
 
 function DropdownButton({
   children,
@@ -166,43 +167,46 @@ function CollectionItem({ img, name, edition, price }: CollectionItemType) {
 
 export default function CollectionAssets() {
   return (
-    <SectionWrapper className="md:px-10 md:py-10">
-      <form className="bg-white rounded-xl overflow-hidden flex items-center justify-between px-3.5 relative">
-        <input
-          className="placeholder:text-black placeholder:capitalize py-4.5 grow"
-          type="text"
-          placeholder="search assets"
-        />
-        <Button
-          className="p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
-          type="submit"
-        >
-          <img className="w-4.5" src="./img/search-dark.png" alt="" />
-        </Button>
-      </form>
-      <div className="flex items-center justify-between md:mt-10">
-        <div className="flex items-center gap-5 ">
-          <DropdownButton>category</DropdownButton>
-          <DropdownButton>era</DropdownButton>
-          <DropdownButton>edition/supply</DropdownButton>
-        </div>
+    <>
+      <CollectionItemPopup open={true} />
+      <SectionWrapper className="md:px-10 md:py-10">
+        <form className="bg-white rounded-xl overflow-hidden flex items-center justify-between px-3.5 relative">
+          <input
+            className="placeholder:text-black placeholder:capitalize py-4.5 grow"
+            type="text"
+            placeholder="search assets"
+          />
+          <Button
+            className="p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
+            type="submit"
+          >
+            <img className="w-4.5" src="./img/search-dark.png" alt="" />
+          </Button>
+        </form>
+        <div className="flex items-center justify-between md:mt-10">
+          <div className="flex items-center gap-5 ">
+            <DropdownButton>category</DropdownButton>
+            <DropdownButton>era</DropdownButton>
+            <DropdownButton>edition/supply</DropdownButton>
+          </div>
 
-        <div className="flex items-center">
-          <p className="capitalize font-medium text-[18px]">
-            56 items sort by :
-          </p>
-          <DropdownButton fontSize="text-[18px]">
-            highest edition
-          </DropdownButton>
+          <div className="flex items-center">
+            <p className="capitalize font-medium text-[18px]">
+              56 items sort by :
+            </p>
+            <DropdownButton fontSize="text-[18px]">
+              highest edition
+            </DropdownButton>
+          </div>
         </div>
-      </div>
-      <ul className="flex flex-wrap gap-x-5 gap-y-10 justify-center mt-10 mb-20">
-        {COLLECTION_ASSETS_LIST.map((item, i) => {
-          return <CollectionItem key={i} {...item} />;
-        })}
-      </ul>
+        <ul className="flex flex-wrap gap-x-5 gap-y-10 justify-center mt-10 mb-20">
+          {COLLECTION_ASSETS_LIST.map((item, i) => {
+            return <CollectionItem key={i} {...item} />;
+          })}
+        </ul>
 
-      <Pagination />
-    </SectionWrapper>
+        <Pagination />
+      </SectionWrapper>
+    </>
   );
 }
