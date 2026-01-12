@@ -95,6 +95,16 @@
 
   /* color */
   --color-gray-500: #6c737f;
+
+  /* animation */
+  @keyframes slide {
+    to {
+      translate: -100% 0%;
+    }
+    from {
+      translate: 0 0;
+    }
+  }
 }
 
 body {
