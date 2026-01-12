@@ -26,7 +26,7 @@ function DropdownButton({
 
 function Pagination() {
   return (
-    <div className="flex items-center justify-center gap-12 ">
+    <div className="hidden md:flex items-center justify-center gap-12 ">
       <Button className="p-2">
         <img src="./img/chevron-left.png" className="w-6" alt="" />
       </Button>
@@ -67,6 +67,7 @@ type CollectionItemType = {
 
 type CollectionItemProps = CollectionItemType & {
   onClick: () => void;
+  className?: string;
 };
 
 const COLLECTION_ASSETS_LIST: CollectionItemType[] = [
@@ -150,14 +151,17 @@ function CollectionItem({
   edition,
   price,
   onClick,
+  className,
 }: CollectionItemProps) {
   const detailBaseClass = "flex flex-col  mt-4 md:mt-5 gap-2 md:gap-2.5";
   const itemNameClass =
     "uppercase text-[16px] md:text-[20px] font-medium text-5";
   const itemPriceClass = "font-inter text-[#555] tracking-[-5%] leading-[150%]";
 
+  const containerBaseClass = "basis-[calc(25%-20px)]";
+
   return (
-    <div className="basis-[calc(25%-20px)]" onClick={onClick}>
+    <div className={twMerge(containerBaseClass, className)} onClick={onClick}>
       <img src={img} alt={name} />
       <div className={detailBaseClass}>
         <p className={itemNameClass}>{name}</p>
@@ -182,8 +186,8 @@ export default function CollectionAssets() {
   return (
     <>
       <CollectionItemPopup open={open} onClose={() => setOpen(() => false)} />
-      <SectionWrapper className="md:px-10 md:py-10">
-        <form className="bg-white rounded-xl overflow-hidden flex items-center justify-between px-3.5 relative">
+      <SectionWrapper className="md:px-10 md:py-10 bg-[#FAF6F3] md:bg-transparent border border-[#D9D9D9] md:border-transparent">
+        <form className="bg-white rounded-[18px] md:rounded-xl overflow-hidden flex items-center justify-between px-3 md:px-3.5 relative">
           <input
             className="placeholder:text-black placeholder:capitalize py-4.5 grow"
             type="text"
@@ -196,7 +200,7 @@ export default function CollectionAssets() {
             <img className="w-4.5" src="./img/search-dark.png" alt="" />
           </Button>
         </form>
-        <div className="flex items-center justify-between md:mt-10">
+        <div className="hidden md:flex items-center justify-between md:mt-10">
           <div className="flex items-center gap-5 ">
             <DropdownButton>category</DropdownButton>
             <DropdownButton>era</DropdownButton>
@@ -212,12 +216,13 @@ export default function CollectionAssets() {
             </DropdownButton>
           </div>
         </div>
-        <ul className="flex flex-wrap gap-x-5 gap-y-10 justify-center mt-10 mb-20">
+        <ul className="flex flex-col md:flex-row flex-wrap gap-x-5 gap-y-8 md:gap-y-10 justify-center mt-6 md:mt-10 mb-6 md:mb-20">
           {COLLECTION_ASSETS_LIST.map((item, i) => {
             return (
               <CollectionItem
-                onClick={() => setOpen(() => true)}
                 key={i}
+                className={`${i < 3 ? "block" : "hidden"} md:block`}
+                onClick={() => setOpen(() => true)}
                 {...item}
               />
             );
@@ -225,6 +230,9 @@ export default function CollectionAssets() {
         </ul>
 
         <Pagination />
+        <Button className="font-geist bg-[#00000005] text-black md:hidden block mx-auto">
+          see more
+        </Button>
       </SectionWrapper>
     </>
   );
