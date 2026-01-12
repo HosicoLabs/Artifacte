@@ -3,7 +3,7 @@
 import Button from "@/comps/primitive/Button";
 import SectionWrapper from "@/comps/primitive/SectionWrapper";
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import CollectionItemPopup from "./CollectionPopup";
 
@@ -181,12 +181,77 @@ function CollectionItem({
   );
 }
 
+function DropdownItem({ label, value }: { label: string; value: string }) {
+  return (
+    <label className="flex items-center gap-3 cursor-pointer select-none justify-between py-3.5">
+      <span className="text-[12px] md:text-[16px] capitalize">{label}</span>
+
+      <div className="relative">
+        <input type="checkbox" className="peer hidden" />
+
+        <div className="relative h-5 w-5 rounded-[3px] border border-[#B3B3B3] transition peer-checked:border-[#AC463A] peer-checked:bg-[#AC463A]"></div>
+        {/* <!-- checkmark --> */}
+        <span className="absolute left-[50%] top-0 -translate-x-[50%] translate-y-[30%] h-2.5 w-1.5 border-white border-b-2 border-r-2 rotate-45 opacity-0 transition peer-checked:opacity-100"></span>
+      </div>
+    </label>
+  );
+}
+
+function Dropdown({ label }: { label: string }) {
+  const [opened, setOpened] = useState<boolean>(false);
+  const listRef = useRef<HTMLUListElement>(null);
+  return (
+    <div>
+      <div
+        className="flex items-center justify-between py-4 border-b border-b-[#e5e5e5]"
+        onClick={() => setOpened((prev) => !prev)}
+      >
+        <p className="text-[12px] capitalize">{label}</p>
+
+        <img
+          className={twMerge(
+            "transition-[rotate] w-5",
+            opened ? "rotate-180" : "rotate-0"
+          )}
+          src="./img/chevron-down.png"
+          alt=""
+        />
+      </div>
+      <div
+        className={twMerge(
+          "overflow-hidden transition-all",
+          opened
+            ? `py-3.5 max-h-[${listRef.current?.clientHeight}px]`
+            : "py-0 max-h-0"
+        )}
+      >
+        <ul
+          ref={listRef}
+          className="flex flex-col  bg-[#FAF6F3] border border-[#D9D9D9] px-5 py-1.5 rounded-lg divide-y divide-[#e5e5e5] "
+        >
+          {[
+            "fine art",
+            "design objects",
+            "sculpture",
+            "decorative arts",
+            "rare objects",
+            "real world asset",
+          ].map((e, i) => {
+            return <DropdownItem key={i} label={e} value="" />;
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 export default function CollectionAssets() {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <>
       <CollectionItemPopup open={open} onClose={() => setOpen(() => false)} />
       <SectionWrapper className="md:px-10 md:py-10 bg-[#FAF6F3] md:bg-transparent border border-[#D9D9D9] md:border-transparent">
+        <Dropdown label="hello" />
         <form className="bg-white rounded-[18px] md:rounded-xl overflow-hidden flex items-center justify-between px-3 md:px-3.5 relative">
           <input
             className="placeholder:text-black placeholder:capitalize py-4.5 grow"
