@@ -4,6 +4,43 @@ import Button from "@/comps/primitive/Button";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+function DetailsTable() {
+  const DETAILS_LIST = [
+    {
+      label: "mint",
+      value: "9R4R...Ym8Q",
+    },
+    {
+      label: "owner",
+      value: "8Gwd...DQrh",
+    },
+  ];
+  return (
+    <div className="px-4 py-6 rounded-t-2xl bg-[#fafafa] border border-[#d9d9d9] border-b-transparent">
+      <img src="./img/twitter.png" alt="" className="block w-5" />
+      <p className="capitalize text-[14px] py-2">cabinet vint</p>
+
+      <ul className="flex flex-col gap-3 pt-1 border-t border-t-[#d9d9d9]">
+        {DETAILS_LIST.map((item, i) => {
+          return (
+            <li key={i} className="flex items-center justify-between">
+              <p className="font-inter capitalize text-[14px] text-[#857F94]">
+                {item.label}
+              </p>
+              <div className="flex items-center">
+                <img src="./img/price-icon.png" className="w-4" alt="" />
+                <p className="font-inter text-[14px] text-[#111]">
+                  {item.value}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
   const [detail, setDetail] = useState<string>("details");
   const COLLECTION_STATS_LIST = [
@@ -29,28 +66,20 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
     },
   ];
 
-  const DETAILS_LIST = [
-    {
-      label: "mint",
-      value: "9R4R...Ym8Q",
-    },
-    {
-      label: "owner",
-      value: "8Gwd...DQrh",
-    },
-  ];
-
   return (
-    <div className="px-7 pt-5.5">
-      <Button className="block bg-transparent p-0 ml-auto" onClick={onClose}>
+    <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5">
+      <Button
+        className="hidden md:block bg-transparent p-0 ml-auto"
+        onClick={onClose}
+      >
         <img className="w-5.5" src="./img/close-outline.png" alt="" />
       </Button>
 
-      <h2 className="font-grotesk font-medium uppercase text-[40px] md:my-3 text-[#0A0F2E]">
+      <h2 className="font-grotesk font-medium uppercase text-[32px] md:text-[40px] md:my-3 text-[#0A0F2E]">
         Oakwood Cabinet
       </h2>
 
-      <div className="flex justify-between items-center md:mb-6">
+      <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-3">
           <p className="font-satoshi capitalize text-lg text-gray-500">
             cabinet vint
@@ -89,12 +118,12 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
         buy now
       </Button>
 
-      <ul className="flex items-center gap-2 justify-between">
+      <ul className="flex gap-2 justify-between">
         {COLLECTION_STATS_LIST.map((item, i) => {
           return (
             <li
               key={i}
-              className="border border-[#d5d0e1] rounded-md py-1.5 px-5"
+              className="flex flex-col items-center justify-center border border-[#d5d0e1] rounded-md py-1 md:py-1.5 grow "
             >
               <p className="capitalize font-inter text-[14px] text-center text-[#857F94]">
                 {item.label}
@@ -108,7 +137,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
         })}
       </ul>
 
-      <ul className="flex items-center justify-between mt-11 mb-2">
+      <ul className="flex items-center justify-between mt-10.5 md:mt-11 mb-2">
         {["traits", "offers", "activity", "price history", "details"].map(
           (e, i) => {
             const buttonClass = "p-0 bg-transparent font-regular";
@@ -131,28 +160,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
         )}
       </ul>
 
-      <div className="px-4 py-6 rounded-t-2xl bg-[#fafafa] border border-[#d9d9d9] border-b-transparent">
-        <img src="./img/twitter.png" alt="" className="block w-5" />
-        <p className="capitalize text-[14px] py-2">cabinet vint</p>
-
-        <ul className="flex flex-col gap-3 pt-1 border-t border-t-[#d9d9d9]">
-          {DETAILS_LIST.map((item, i) => {
-            return (
-              <li key={i} className="flex items-center justify-between">
-                <p className="font-inter capitalize text-[14px] text-[#857F94]">
-                  {item.label}
-                </p>
-                <div className="flex items-center">
-                  <img src="./img/price-icon.png" className="w-4" alt="" />
-                  <p className="font-inter text-[14px] text-[#111]">
-                    {item.value}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <DetailsTable />
     </div>
   );
 }
@@ -163,7 +171,7 @@ function CollectionItemStats() {
   const labelClass = "font-bold ";
 
   return (
-    <div className="flex items-center justify-between px-7 py-3.5">
+    <div className="hidden md:flex items-center justify-between px-7 py-3.5">
       <p className={twMerge(statsBaseClass, "text-[#191919]")}>SMB Gen2</p>
       <p className={statsBaseClass}>
         <span className="capitalize">floor: </span>
@@ -217,10 +225,10 @@ export default function CollectionItemPopup({
   );
   return (
     <div className={overlayClass}>
-      <div className="mx-auto bg-white rounded-xl overflow-hidden">
-        <div className="flex pt-0.5 pl-0.5">
+      <div className="max-h-screen overflow-y-scroll mx-auto bg-white rounded-2xl md:rounded-xl overflow-hidden max-w-[calc(100vw-16px)]">
+        <div className="flex flex-col md:flex-row  pt-0.5 pl-0.5">
           <img
-            className="rounded-xl aspect-square overflow-hidden"
+            className="max-w-full rounded-2xl md:rounded-xl aspect-square overflow-hidden"
             src="./img/collection-item-1.png"
             alt=""
           />
