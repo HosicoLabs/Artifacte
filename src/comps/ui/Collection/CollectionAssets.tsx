@@ -203,7 +203,7 @@ function Dropdown({ label }: { label: string }) {
   return (
     <div>
       <div
-        className="flex items-center justify-between py-4 border-b border-b-[#e5e5e5]"
+        className="flex items-center justify-between py-4"
         onClick={() => setOpened((prev) => !prev)}
       >
         <p className="text-[12px] capitalize">{label}</p>
@@ -221,8 +221,8 @@ function Dropdown({ label }: { label: string }) {
         className={twMerge(
           "overflow-hidden transition-all",
           opened
-            ? `py-3.5 max-h-[${listRef.current?.clientHeight}px]`
-            : "py-0 max-h-0"
+            ? `py-3.5 max-h-[${listRef.current?.clientHeight}px] border-t border-t-[#e5e5e5]`
+            : "py-0 max-h-0 border-t-transparent"
         )}
       >
         <ul
@@ -245,26 +245,75 @@ function Dropdown({ label }: { label: string }) {
   );
 }
 
+function CollectionFilter() {
+  const [opened, setOpened] = useState<boolean>(false);
+  return (
+    <form className="bg-white rounded-[18px] md:rounded-xl flex items-center justify-between px-3 md:px-3.5 relative">
+      <img
+        className="w-4.5 md:hidden mr-[.5em]"
+        src="./img/search-dark.png"
+        alt=""
+      />
+
+      <input
+        className="placeholder:text-black placeholder:capitalize py-4.5 grow"
+        type="text"
+        placeholder="search assets"
+      />
+
+      <Button
+        className="hidden md:inline p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
+        type="submit"
+      >
+        <img className="w-4.5" src="./img/search-dark.png" alt="" />
+      </Button>
+
+      <Button
+        onClick={() => setOpened((prev) => !prev)}
+        className="inline md:hidden p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
+      >
+        <img className="w-4.5" src="./img/filter.png" alt="" />
+      </Button>
+
+      <div
+        className={twMerge(
+          "bg-white rounded-xl border border-[#e5e5e5] shadow-[0_4px_6px_#00000004] absolute w-full p-5 z-50 top-[calc(100%+8px)] left-0",
+          opened ? "block" : "hidden"
+        )}
+      >
+        <div className="flex items-center justify-between border-b border-b-[#e5e5e5] pb-3.5">
+          <p className="capitalize font-semibold">filter</p>
+
+          <Button
+            className="p-0 bg-transparent w-5"
+            onClick={() => setOpened(() => false)}
+          >
+            <img src="./img/x.png" alt="" />
+          </Button>
+        </div>
+        <ul className="flex flex-col divide-y divide-[#e5e5e5]">
+          {[
+            "category",
+            "era",
+            "edition/supply",
+            "value range",
+            "on-chain status",
+          ].map((el, i) => {
+            return <Dropdown key={i} label={el} />;
+          })}
+        </ul>
+      </div>
+    </form>
+  );
+}
+
 export default function CollectionAssets() {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <>
       <CollectionItemPopup open={open} onClose={() => setOpen(() => false)} />
       <SectionWrapper className="md:px-10 md:py-10 bg-[#FAF6F3] md:bg-transparent border border-[#D9D9D9] md:border-transparent">
-        <Dropdown label="hello" />
-        <form className="bg-white rounded-[18px] md:rounded-xl overflow-hidden flex items-center justify-between px-3 md:px-3.5 relative">
-          <input
-            className="placeholder:text-black placeholder:capitalize py-4.5 grow"
-            type="text"
-            placeholder="search assets"
-          />
-          <Button
-            className="p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
-            type="submit"
-          >
-            <img className="w-4.5" src="./img/search-dark.png" alt="" />
-          </Button>
-        </form>
+        <CollectionFilter />
         <div className="hidden md:flex items-center justify-between md:mt-10">
           <div className="flex items-center gap-5 ">
             <DropdownButton>category</DropdownButton>
