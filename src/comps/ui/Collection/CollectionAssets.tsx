@@ -270,7 +270,7 @@ function CollectionFilter() {
 
       <Button
         onClick={() => setOpened((prev) => !prev)}
-        className="inline md:hidden p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
+        className="inline md:hidden p-2"
       >
         <img className="w-4.5" src="./img/filter.png" alt="" />
       </Button>
