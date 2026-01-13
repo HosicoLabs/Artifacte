@@ -21,7 +21,7 @@ function DetailsTable() {
     },
   ];
   return (
-    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] md:border-b-transparent">
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9]">
       <img src="./img/twitter.png" alt="" className="block w-5" />
       <p className="capitalize text-[14px] py-2">cabinet vint</p>
 
@@ -62,7 +62,7 @@ function DetailsTable() {
 
 function ActivityTable() {
   return (
-    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] md:border-b-transparent">
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9]">
       <Table>
         {{
           body: ["list", "buy", "offer"].map((item, i) => {
@@ -106,7 +106,7 @@ function ActivityTable() {
 
 function OffersTable() {
   return (
-    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] md:border-b-transparent">
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9]">
       <Table>
         {{
           body: Array.from({ length: 3 }).map((item, i) => {
@@ -259,7 +259,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
         )}
       </ul>
 
-      <div className="md:overflow-hidden md:max-h-[9.5em]">
+      <div className="md:overflow-y-scroll md:max-h-[9.5em]">
         {!["activity", "offers"].includes(selected) && <DetailsTable />}
         {selected == "activity" && <ActivityTable />}
         {selected == "offers" && <OffersTable />}
