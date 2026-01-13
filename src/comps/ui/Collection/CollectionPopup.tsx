@@ -14,9 +14,13 @@ function DetailsTable() {
       label: "owner",
       value: "8Gwd...DQrh",
     },
+    {
+      label: "on-chain collection",
+      value: "J6RJ...rp1Q",
+    },
   ];
   return (
-    <div className="px-4 py-6 rounded-t-2xl bg-[#fafafa] border border-[#d9d9d9] border-b-transparent">
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] border-b-transparent">
       <img src="./img/twitter.png" alt="" className="block w-5" />
       <p className="capitalize text-[14px] py-2">cabinet vint</p>
 
@@ -36,6 +40,20 @@ function DetailsTable() {
             </li>
           );
         })}
+        <li className="flex items-center justify-between">
+          <p className="font-inter capitalize text-[14px] text-[#857F94]">
+            token standard
+          </p>
+
+          <p className="font-inter text-[14px] text-[#111]">Programmable NFT</p>
+        </li>
+        <li className="flex items-center justify-between">
+          <p className="font-inter capitalize text-[14px] text-[#857F94]">
+            royalties
+          </p>
+
+          <p className="font-inter text-[14px] text-[#111]">9.99%</p>
+        </li>
       </ul>
     </div>
   );
@@ -67,7 +85,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
   ];
 
   return (
-    <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5">
+    <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5 pb-1.5">
       <Button
         className="hidden md:block bg-transparent p-0 ml-auto"
         onClick={onClose}
@@ -160,7 +178,9 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
         )}
       </ul>
 
-      <DetailsTable />
+      <div className="md:overflow-hidden md:max-h-[9.5em]">
+        <DetailsTable />
+      </div>
     </div>
   );
 }
