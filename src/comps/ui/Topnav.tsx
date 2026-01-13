@@ -34,7 +34,7 @@ export default function Topnav() {
   const [opened, setOpened] = useState<boolean>(false);
 
   const containerBaseClass =
-    "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b border-b-[#d9d9d9] backdrop-blur-[20px]";
+    "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b border-b-[#d9d9d9] md:backdrop-blur-[20px]";
 
   const isHomePage = path == "/";
   return (
