@@ -81,7 +81,12 @@ export default function Topnav() {
         <ul className="flex flex-col gap-4">
           {URLS.map((link, i) => {
             return (
-              <Link className="font-geist capitalize " key={i} href={link.href}>
+              <Link
+                onClick={() => setOpened(() => false)}
+                className="font-geist capitalize "
+                key={i}
+                href={link.href}
+              >
                 {link.label}
               </Link>
             );
