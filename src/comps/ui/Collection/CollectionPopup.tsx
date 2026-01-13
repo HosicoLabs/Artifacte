@@ -325,7 +325,7 @@ export default function CollectionItemPopup({
   const overlayClass = twMerge(
     defaultOverlayClass,
     open
-      ? "flex flex-col gap-2.5 justify-center items-center py-12.5"
+      ? "flex flex-col gap-2.5 justify-center items-center py-6 md:py-12.5"
       : "hidden"
   );
   return (
