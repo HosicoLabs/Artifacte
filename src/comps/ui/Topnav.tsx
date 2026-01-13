@@ -34,14 +34,14 @@ export default function Topnav() {
   const [opened, setOpened] = useState<boolean>(false);
 
   const containerBaseClass =
-    "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 top-0 w-full z-50";
+    "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b border-b-[#d9d9d9] backdrop-blur-[20px]";
 
   const isHomePage = path == "/";
   return (
     <nav
       className={twMerge(
         containerBaseClass,
-        isHomePage ? "fixed md:fixed" : "fixed md:static"
+        isHomePage ? "bg-[#11111110]" : "bg-[#ffffff10]"
       )}
     >
       {/* left  */}
