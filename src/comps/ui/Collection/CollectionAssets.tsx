@@ -309,6 +309,7 @@ function CollectionFilter() {
 
 export default function CollectionAssets() {
   const [open, setOpen] = useState<boolean>(false);
+  const [listExpanded, setListExpanded] = useState<boolean>(false);
   return (
     <>
       <CollectionItemPopup open={open} onClose={() => setOpen(() => false)} />
@@ -335,7 +336,9 @@ export default function CollectionAssets() {
             return (
               <CollectionItem
                 key={i}
-                className={`${i < 3 ? "block" : "hidden"} md:block`}
+                className={`${
+                  i < 3 ? "block" : listExpanded ? "block" : "hidden"
+                } md:block`}
                 onClick={() => setOpen(() => true)}
                 {...item}
               />
@@ -344,7 +347,10 @@ export default function CollectionAssets() {
         </ul>
 
         <Pagination />
-        <Button className="font-geist bg-[#00000005] text-black md:hidden block mx-auto">
+        <Button
+          onClick={() => setListExpanded(() => true)}
+          className="font-geist bg-[#00000005] text-black md:hidden block mx-auto"
+        >
           see more
         </Button>
       </SectionWrapper>
