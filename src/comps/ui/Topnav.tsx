@@ -3,6 +3,8 @@ import Link from "next/link";
 import Button from "../primitive/Button";
 import Picture from "../primitive/Picture";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { twMerge } from "tailwind-merge";
 
 const URLS = [
   {
@@ -28,10 +30,20 @@ const URLS = [
 ];
 
 export default function Topnav() {
+  const path = usePathname();
   const [opened, setOpened] = useState<boolean>(false);
 
+  const containerBaseClass =
+    "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 top-0 w-full z-50";
+
+  const isHomePage = path == "/";
   return (
-    <nav className="flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 relative md:fixed top-0 w-full z-50">
+    <nav
+      className={twMerge(
+        containerBaseClass,
+        isHomePage ? "fixed md:fixed" : "fixed md:static"
+      )}
+    >
       {/* left  */}
       <div className="flex items-center justify-between grow md:grow-0">
         <div className="flex items-center gap-3">
@@ -43,7 +55,9 @@ export default function Topnav() {
           </Button>
           <Link href="/" onClick={() => setOpened(() => false)}>
             <Picture
-              mdSrc="./img/logo-light.png"
+              mdSrc={
+                isHomePage ? "./img/logo-light.png" : "./img/logo-dark.png"
+              }
               smSrc="./img/logo-dark.png"
               alt="artifacte"
               className="h-6"
@@ -70,7 +84,9 @@ export default function Topnav() {
         <Button className="bg-transparent p-0">
           <img className="w-5" src="./img/search-light.png" alt="search" />
         </Button>
-        <Button>connect</Button>
+        <Button className={isHomePage ? "" : "bg-[#111] text-white"}>
+          connect
+        </Button>
       </div>
       {/* mobile */}
       <div
