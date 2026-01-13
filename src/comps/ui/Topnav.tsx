@@ -41,7 +41,7 @@ export default function Topnav() {
           >
             <img className="w-5" src="./img/menu.png" alt="" />
           </Button>
-          <Link href="#">
+          <Link href="/" onClick={() => setOpened(() => false)}>
             <Picture
               mdSrc="./img/logo-light.png"
               smSrc="./img/logo-dark.png"

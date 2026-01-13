@@ -109,7 +109,7 @@ function CuratedItem({
               ? "justify-between "
               : "justify-center md:justify-start ",
             currentBid != null ? "after:bg-[#555]" : "after:bg-transparent",
-            wrap ? " w-full" : "w-fit"
+            wrap ? " w-full" : "w-full md:w-fit"
           )}
         >
           {currentBid && (
