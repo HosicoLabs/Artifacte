@@ -71,7 +71,13 @@ export default function Topnav() {
         {URLS.map((link, i) => {
           return (
             <Link
-              className="font-geist capitalize text-white"
+              className={twMerge(
+                "font-geist capitalize",
+                isHomePage ? "text-white" : "text-[#111]",
+                !isHomePage && path == link.href
+                  ? "font-semibold"
+                  : "font-normal"
+              )}
               key={i}
               href={link.href}
             >

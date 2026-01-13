@@ -35,6 +35,12 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "Geist";
+  src: url("/font/Geist/static/Geist-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
 
 /* Font Space Grotesk */
 @font-face {
