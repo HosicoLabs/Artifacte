@@ -165,12 +165,6 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
     },
   ];
 
-  const tables = {
-    details: <DetailsTable />,
-    offers: <OffersTable />,
-    activity: <ActivityTable />,
-  };
-
   return (
     <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5 pb-1.5">
       <Button
@@ -330,12 +324,19 @@ export default function CollectionItemPopup({
 
   const overlayClass = twMerge(
     defaultOverlayClass,
-    open ? "grid items-center" : "hidden"
+    open
+      ? "flex flex-col gap-2.5 justify-center items-center py-12.5"
+      : "hidden"
   );
   return (
     <div className={overlayClass}>
+      <div className="w-full h-10 block md:hidden max-w-[calc(100vw-16px)]">
+        <Button className="block bg-transparent p-0 ml-auto" onClick={onClose}>
+          <img className="w-5.5" src="./img/close-outline-light.png" alt="" />
+        </Button>
+      </div>
       <div className="max-h-screen overflow-y-scroll mx-auto bg-white rounded-2xl md:rounded-xl overflow-hidden max-w-[calc(100vw-16px)]">
-        <div className="flex flex-col md:flex-row  pt-0.5 pl-0.5">
+        <div className="flex flex-col md:flex-row pt-0.5 pl-0.5 pr-0.5 md:pr-0">
           <img
             className="max-w-full rounded-2xl md:rounded-xl aspect-square overflow-hidden"
             src="./img/collection-item-1.png"
