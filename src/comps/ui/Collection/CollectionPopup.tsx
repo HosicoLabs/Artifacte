@@ -1,7 +1,8 @@
 "use client";
 
 import Button from "@/comps/primitive/Button";
-import { useState } from "react";
+import { Table, TableRow } from "@/comps/primitive/Table";
+import { ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 function DetailsTable() {
@@ -20,7 +21,7 @@ function DetailsTable() {
     },
   ];
   return (
-    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] border-b-transparent">
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] md:border-b-transparent">
       <img src="./img/twitter.png" alt="" className="block w-5" />
       <p className="capitalize text-[14px] py-2">cabinet vint</p>
 
@@ -59,8 +60,88 @@ function DetailsTable() {
   );
 }
 
+function ActivityTable() {
+  return (
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] md:border-b-transparent">
+      <Table>
+        {{
+          body: ["list", "buy", "offer"].map((item, i) => {
+            const color =
+              item == "list"
+                ? "text-[#FF99A1]"
+                : item == "buy"
+                ? "text-[#41E78A]"
+                : "text-[#FFC629]";
+            return (
+              <TableRow key={i}>
+                <p
+                  className={twMerge(
+                    "font-bold ctext-[14px] capitalize",
+                    color
+                  )}
+                >
+                  {item}
+                </p>
+                <p className="uppercase text-[14px] text-[#857F94]">2g7dbj</p>
+                <p className="uppercase text-[14px] text-[#857F94]">2g7dbj</p>
+                <p className="uppercase text-[14px] text-[#857F94]">0.9 sol</p>
+                <p className="text-[14px] text-[#857F94]">23h</p>
+              </TableRow>
+            );
+          }),
+          headers: (
+            <TableRow>
+              {["type", "seller", "buyer", "price", "time"].map((el, i) => (
+                <p key={i} className="font-inter">
+                  {el}
+                </p>
+              ))}
+            </TableRow>
+          ),
+        }}
+      </Table>
+    </div>
+  );
+}
+
+function OffersTable() {
+  return (
+    <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9] md:border-b-transparent">
+      <Table>
+        {{
+          body: Array.from({ length: 3 }).map((item, i) => {
+            return (
+              <TableRow key={i}>
+                <p className="uppercase text-[14px] text-[#111111] base-1/4 min-w-1/4">
+                  0.98 sol
+                </p>
+                <p className="uppercase text-[14px] text-[#857F94] base-1/4 min-w-1/4">
+                  2g7dbj
+                </p>
+                <p className="text-[14px] text-[#857F94] base-1/4 min-w-1/4">
+                  {i == 0 ? "12mo" : "23h"}
+                </p>
+                <p className="base-1/4 min-w-1/4"> </p>
+              </TableRow>
+            );
+          }),
+          headers: (
+            <TableRow>
+              {["price", "from", "expires in", "action"].map((el, i) => (
+                <p key={i} className="font-inter">
+                  {el}
+                </p>
+              ))}
+            </TableRow>
+          ),
+        }}
+      </Table>
+    </div>
+  );
+}
+
 function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
-  const [detail, setDetail] = useState<string>("details");
+  const [selected, setSelected] = useState<string>("details");
   const COLLECTION_STATS_LIST = [
     {
       label: "list price",
@@ -83,6 +164,12 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
       currency: "sol",
     },
   ];
+
+  const tables = {
+    details: <DetailsTable />,
+    offers: <OffersTable />,
+    activity: <ActivityTable />,
+  };
 
   return (
     <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5 pb-1.5">
@@ -114,7 +201,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
       </div>
 
       <p className="font-grotesk font-medium text-[#0A0F2E] border-t border-t-[#d9d9d9] text-[36px] mb-2">
-        4.283 <span className="text-2xl">sol</span>
+        4.283 <span className="text-2xl uppercase">sol</span>
       </p>
 
       <div className="flex justify-between items-center">
@@ -161,13 +248,13 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
             const buttonClass = "p-0 bg-transparent font-regular";
             const labelClass = "font-inter text-[14px]";
             const colorClass =
-              e == detail
+              e == selected
                 ? "font-medium text-[#191919]"
                 : "font-regular text-[#857F94]";
             return (
               <li key={i}>
                 <Button
-                  onClick={() => setDetail(() => e)}
+                  onClick={() => setSelected(() => e)}
                   className={buttonClass}
                 >
                   <span className={twMerge(labelClass, colorClass)}>{e}</span>
@@ -179,7 +266,9 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
       </ul>
 
       <div className="md:overflow-hidden md:max-h-[9.5em]">
-        <DetailsTable />
+        {!["activity", "offers"].includes(selected) && <DetailsTable />}
+        {selected == "activity" && <ActivityTable />}
+        {selected == "offers" && <OffersTable />}
       </div>
     </div>
   );
