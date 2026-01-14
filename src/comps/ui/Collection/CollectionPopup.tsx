@@ -196,7 +196,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
         </div>
       </div>
 
-      <div className="overflow-y-scroll md:max-h-110.5">
+      <div className="overflow-y-scroll md:max-h-103.5">
         <p className="font-grotesk font-medium text-[#0A0F2E] border-t border-t-[#d9d9d9] text-[36px] mb-2">
           4.283 <span className="text-2xl uppercase">sol</span>
         </p>
@@ -344,7 +344,7 @@ export default function CollectionItemPopup({
       <div className="max-h-screen overflow-y-scroll mx-auto bg-white rounded-2xl md:rounded-xl overflow-hidden max-w-[calc(100vw-16px)]">
         <div className="flex flex-col md:flex-row pt-0.5 pl-0.5 pr-0.5 md:pr-0">
           <img
-            className="max-w-150 w-150 max-h-150 h-150 rounded-2xl md:rounded-xl aspect-square overflow-hidden"
+            className="max-w-full md:max-w-150 md:w-150 md:max-h-150 md:h-150 rounded-2xl md:rounded-xl aspect-square overflow-hidden"
             src="./img/collection-item-1.png"
             alt=""
           />
