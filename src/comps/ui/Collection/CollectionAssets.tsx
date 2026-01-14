@@ -313,7 +313,7 @@ export default function CollectionAssets() {
   return (
     <>
       <CollectionItemPopup open={open} onClose={() => setOpen(() => false)} />
-      <SectionWrapper className="md:px-10 md:py-10 bg-[#FAF6F3] md:bg-transparent border border-[#D9D9D9] md:border-transparent">
+      <SectionWrapper className="md:px-10 md:py-10 bg-[#FAF6F3] border border-[#D9D9D9] md:border-transparent">
         <CollectionFilter />
         <div className="hidden md:flex items-center justify-between md:mt-10">
           <div className="flex items-center gap-5 ">
