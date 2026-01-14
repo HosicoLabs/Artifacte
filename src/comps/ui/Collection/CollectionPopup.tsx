@@ -166,103 +166,109 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
   ];
 
   return (
-    <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5 pb-1.5">
-      <Button
-        className="hidden md:block bg-transparent p-0 ml-auto"
-        onClick={onClose}
-      >
-        <img className="w-5.5" src="./img/close-outline.png" alt="" />
-      </Button>
+    <div className="px-1.5 md:px-7 pt-9.5 md:pt-5.5 pb-1.5 flex flex-col gap-6">
+      <div>
+        <Button
+          className="hidden md:block bg-transparent p-0 ml-auto"
+          onClick={onClose}
+        >
+          <img className="w-5.5" src="./img/close-outline.png" alt="" />
+        </Button>
 
-      <h2 className="font-grotesk font-medium uppercase text-[32px] md:text-[40px] md:my-3 text-[#0A0F2E]">
-        Oakwood Cabinet
-      </h2>
+        <h2 className="font-grotesk font-medium uppercase text-[32px] md:text-[40px] md:my-3 text-[#0A0F2E]">
+          Oakwood Cabinet
+        </h2>
 
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center gap-3">
-          <p className="font-satoshi capitalize text-lg text-gray-500">
-            cabinet vint
-          </p>
-          <img src="./img/verified.png" className="w-4.5" alt="" />
-        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <p className="font-satoshi capitalize text-lg text-gray-500">
+              cabinet vint
+            </p>
+            <img src="./img/verified.png" className="w-4.5" alt="" />
+          </div>
 
-        <p className="font-satoshi text-gray-500">
-          Owned by:{" "}
-          <span className="text-black max-w-[10em] overflow-hidden">
-            2386...Ygde
-          </span>
-        </p>
-      </div>
-
-      <p className="font-grotesk font-medium text-[#0A0F2E] border-t border-t-[#d9d9d9] text-[36px] mb-2">
-        4.283 <span className="text-2xl uppercase">sol</span>
-      </p>
-
-      <div className="flex justify-between items-center">
-        <p className="text-satoshi text-lg text-[#6B7280]">($587.26)</p>
-
-        <div className="flex items-center gap-[.5em]">
-          <p className="text-satoshi text-lg text-[#6B7280]">Pay with:</p>
-
-          <Button className="p-0 bg-transparent flex">
-            <span className="text-black uppercase font-satoshi font-regular">
-              $sol
+          <p className="font-satoshi text-gray-500">
+            Owned by:{" "}
+            <span className="text-black max-w-[10em] overflow-hidden">
+              2386...Ygde
             </span>
-            <img src="./img/chevron-down.png" className="w-6" alt="" />
-          </Button>
+          </p>
         </div>
       </div>
 
-      <Button className="w-full bg-[#191919] text-white font-inter py-3 my-3">
-        buy now
-      </Button>
+      <div className="overflow-y-scroll md:max-h-110.5">
+        <p className="font-grotesk font-medium text-[#0A0F2E] border-t border-t-[#d9d9d9] text-[36px] mb-2">
+          4.283 <span className="text-2xl uppercase">sol</span>
+        </p>
 
-      <ul className="flex gap-2 justify-between">
-        {COLLECTION_STATS_LIST.map((item, i) => {
-          return (
-            <li
-              key={i}
-              className="flex flex-col items-center justify-center border border-[#d5d0e1] rounded-md py-1 md:py-1.5 grow "
-            >
-              <p className="capitalize font-inter text-[14px] text-center text-[#857F94]">
-                {item.label}
-              </p>
-              <p className="uppercase font-inter text-[14px] font-bold text-[#191919]">
-                {item.value}
-                {item.currency && <span className="text-[#857F94]"> sol</span>}
-              </p>
-            </li>
-          );
-        })}
-      </ul>
+        <div className="flex justify-between items-center">
+          <p className="text-satoshi text-lg text-[#6B7280]">($587.26)</p>
 
-      <ul className="flex items-center justify-between mt-10.5 md:mt-11 mb-2">
-        {["traits", "offers", "activity", "price history", "details"].map(
-          (e, i) => {
-            const buttonClass = "p-0 bg-transparent font-regular";
-            const labelClass = "font-inter text-[14px]";
-            const colorClass =
-              e == selected
-                ? "font-medium text-[#191919]"
-                : "font-regular text-[#857F94]";
+          <div className="flex items-center gap-[.5em]">
+            <p className="text-satoshi text-lg text-[#6B7280]">Pay with:</p>
+
+            <Button className="p-0 bg-transparent flex">
+              <span className="text-black uppercase font-satoshi font-regular">
+                $sol
+              </span>
+              <img src="./img/chevron-down.png" className="w-6" alt="" />
+            </Button>
+          </div>
+        </div>
+
+        <Button className="w-full bg-[#191919] text-white font-inter py-3 my-3">
+          buy now
+        </Button>
+
+        <ul className="flex gap-2 justify-between">
+          {COLLECTION_STATS_LIST.map((item, i) => {
             return (
-              <li key={i}>
-                <Button
-                  onClick={() => setSelected(() => e)}
-                  className={buttonClass}
-                >
-                  <span className={twMerge(labelClass, colorClass)}>{e}</span>
-                </Button>
+              <li
+                key={i}
+                className="flex flex-col items-center justify-center border border-[#d5d0e1] rounded-md py-1 md:py-1.5 grow "
+              >
+                <p className="capitalize font-inter text-[14px] text-center text-[#857F94]">
+                  {item.label}
+                </p>
+                <p className="uppercase font-inter text-[14px] font-bold text-[#191919]">
+                  {item.value}
+                  {item.currency && (
+                    <span className="text-[#857F94]"> sol</span>
+                  )}
+                </p>
               </li>
             );
-          }
-        )}
-      </ul>
+          })}
+        </ul>
 
-      <div className="md:overflow-y-scroll md:max-h-[9.5em]">
-        {!["activity", "offers"].includes(selected) && <DetailsTable />}
-        {selected == "activity" && <ActivityTable />}
-        {selected == "offers" && <OffersTable />}
+        <ul className="flex items-center justify-between mt-10.5 md:mt-11 mb-2">
+          {["traits", "offers", "activity", "price history", "details"].map(
+            (e, i) => {
+              const buttonClass = "p-0 bg-transparent font-regular";
+              const labelClass = "font-inter text-[14px]";
+              const colorClass =
+                e == selected
+                  ? "font-medium text-[#191919]"
+                  : "font-regular text-[#857F94]";
+              return (
+                <li key={i}>
+                  <Button
+                    onClick={() => setSelected(() => e)}
+                    className={buttonClass}
+                  >
+                    <span className={twMerge(labelClass, colorClass)}>{e}</span>
+                  </Button>
+                </li>
+              );
+            }
+          )}
+        </ul>
+
+        <div className="">
+          {!["activity", "offers"].includes(selected) && <DetailsTable />}
+          {selected == "activity" && <ActivityTable />}
+          {selected == "offers" && <OffersTable />}
+        </div>
       </div>
     </div>
   );
@@ -338,7 +344,7 @@ export default function CollectionItemPopup({
       <div className="max-h-screen overflow-y-scroll mx-auto bg-white rounded-2xl md:rounded-xl overflow-hidden max-w-[calc(100vw-16px)]">
         <div className="flex flex-col md:flex-row pt-0.5 pl-0.5 pr-0.5 md:pr-0">
           <img
-            className="max-w-full rounded-2xl md:rounded-xl aspect-square overflow-hidden"
+            className="max-w-150 w-150 max-h-150 h-150 rounded-2xl md:rounded-xl aspect-square overflow-hidden"
             src="./img/collection-item-1.png"
             alt=""
           />
