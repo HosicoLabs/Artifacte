@@ -51,7 +51,7 @@ export default function CollectionHero() {
     </ul>
   );
   return (
-    <SectionWrapper className="md:min-h-auto px-2.5 md:px-0 pt-17 md:pt-28 pb-10 md:pb-0 relative bg-transparent overflow-hidden flex flex-col justify-between md:block after:block md:after:hidden after:h-[30%] after:w-full after:absolute after:bottom-0 after:left-0 after:pointer-events-none after:bg-linear-to-t after:from-[#00000060] after:to-[#00000000]">
+    <SectionWrapper className="md:min-h-auto px-2.5 md:px-0 pt-17 md:pt-18 pb-10 md:pb-0 relative bg-transparent overflow-hidden flex flex-col justify-between md:block after:block md:after:hidden after:h-[30%] after:w-full after:absolute after:bottom-0 after:left-0 after:pointer-events-none after:bg-linear-to-t after:from-[#00000060] after:to-[#00000000]">
       <div className="md:px-10 md:pt-20 md:pb-5 mb-110 md:mb-0">
         <div className="flex flex-col md:flex-row justify-between items-end gap-4 md:gap-0 md:mb-10">
           <h1 className="capitalize font-medium text-4xl md:text-5xl leading-[100%] tracking-[-2%] max-w-[10em] text-center md:text-left">
