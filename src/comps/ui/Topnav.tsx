@@ -48,7 +48,7 @@ export default function Topnav() {
       <div className="flex items-center justify-between grow md:grow-0">
         <div className="flex items-center gap-3">
           <Button
-            className="p-0 md:hidden"
+            className="p-0 md:hidden bg-transparent"
             onClick={() => setOpened((prev) => !prev)}
           >
             <img className="w-5" src="./img/menu.png" alt="" />
