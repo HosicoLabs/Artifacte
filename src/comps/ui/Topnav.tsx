@@ -2,11 +2,17 @@
 import Link from "next/link";
 import Button from "../primitive/Button";
 import Picture from "../primitive/Picture";
+import StyledWalletButton from "./StyledWalletButton";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
-const URLS = [
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const NAV_LINKS: NavLink[] = [
   {
     href: "#",
     label: "live auctions",
@@ -29,18 +35,19 @@ const URLS = [
   },
 ];
 
+const CONTAINER_BASE_CLASS =
+  "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b border-b-[#d9d9d9] md:backdrop-blur-[20px]";
+
 export default function Topnav() {
   const path = usePathname();
   const [opened, setOpened] = useState<boolean>(false);
 
-  const containerBaseClass =
-    "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b border-b-[#d9d9d9] md:backdrop-blur-[20px]";
-
-  const isHomePage = path == "/";
+  const isHomePage = path === "/";
+  
   return (
     <nav
-      className={twMerge(
-        containerBaseClass,
+      className={cn(
+        CONTAINER_BASE_CLASS,
         isHomePage ? "bg-[#11111110]" : "bg-[#ffffff10]"
       )}
     >
@@ -64,21 +71,21 @@ export default function Topnav() {
             />
           </Link>
         </div>
-        <Button className="md:hidden border border-2-solid">connect</Button>
+        <StyledWalletButton variant="light" isMobile />
       </div>
-      {/* desktop */}
+      {/* desktop */ }
       <ul className="hidden md:flex items-center gap-8">
-        {URLS.map((link, i) => {
+        {NAV_LINKS.map((link, index) => {
+          const isActive = !isHomePage && path === link.href;
+          
           return (
             <Link
-              className={twMerge(
+              className={cn(
                 "font-geist capitalize",
                 isHomePage ? "text-white" : "text-[#111]",
-                !isHomePage && path == link.href
-                  ? "font-semibold"
-                  : "font-normal"
+                isActive ? "font-semibold" : "font-normal"
               )}
-              key={i}
+              key={index}
               href={link.href}
             >
               {link.label}
@@ -90,35 +97,32 @@ export default function Topnav() {
         <Button className="bg-transparent p-0">
           <img className="w-5" src="./img/search-light.png" alt="search" />
         </Button>
-        <Button className={isHomePage ? "" : "bg-[#111] text-white"}>
-          connect
-        </Button>
+        <StyledWalletButton variant={isHomePage ? "light" : "dark"} />
       </div>
       {/* mobile */}
       <div
-        className={`flex flex-col md:hidden absolute top-full left-0 w-full  bg-white px-5  overflow-hidden transition-[height] ${
+        className={cn(
+          "flex flex-col md:hidden absolute top-full left-0 w-full bg-white px-5 overflow-hidden transition-[height]",
           opened ? "h-[90vh]" : "h-0"
-        }`}
+        )}
       >
         <ul className="flex flex-col gap-4">
-          {URLS.map((link, i) => {
-            return (
-              <Link
-                onClick={() => setOpened(() => false)}
-                className="font-geist capitalize "
-                key={i}
-                href={link.href}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+          {NAV_LINKS.map((link, index) => (
+            <Link
+              onClick={() => setOpened(false)}
+              className="font-geist capitalize"
+              key={index}
+              href={link.href}
+            >
+              {link.label}
+            </Link>
+          ))}
         </ul>
         <div className="hidden gap-4">
           <Button className="bg-transparent p-0">
             <img className="w-5" src="./img/search-light.png" alt="search" />
           </Button>
-          <Button>connect</Button>
+          <StyledWalletButton variant="light" />
         </div>
       </div>
     </nav>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Topnav from "@/comps/ui/Topnav";
 import Footer from "@/comps/ui/Footer";
+import { SolanaProvider } from "@/comps/solana-provider";
 
 export const metadata: Metadata = {
   title: "Artifacte",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"antialiased"}>
-        <Topnav />
-        {children}
-        <Footer />
+        <SolanaProvider>
+          <Topnav />
+          {children}
+          <Footer />
+        </SolanaProvider>
       </body>
     </html>
   );
