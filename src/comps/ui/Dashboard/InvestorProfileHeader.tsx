@@ -18,8 +18,9 @@ export default function InvestorProfileHeader({
     : '';
 
   return (
-    <div className="bg-[#191919] text-white px-4 md:px-10 py-6 md:py-8">
+    <div className="bg-[#191919] text-white px-4 md:px-10 pt-20 md:pt-24 pb-6 md:pb-8">
       <div className="w-full mx-auto">
+        {/* Header Row */}
         <div className="flex items-center justify-between mb-6">
           <div>
             <div className="text-[12px] md:text-[14px] font-medium uppercase tracking-wide opacity-60 mb-2">

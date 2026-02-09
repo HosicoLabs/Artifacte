@@ -10,7 +10,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <main className="pt-[60px] md:pt-[72px]">
+    <main>
       <InvestorProfileHeader
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}

@@ -13,7 +13,6 @@ export default function Picture({
   className = "",
   alt = "",
 }: PictureProps) {
-  // If only src is provided, use it for both sizes
   const smallSource = smSrc ?? src ?? "";
   const mediumSource = mdSrc ?? src ?? "";
 

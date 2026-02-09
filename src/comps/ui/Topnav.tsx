@@ -6,6 +6,7 @@ import StyledWalletButton from "./StyledWalletButton";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
 
 interface NavLink {
   href: string;
@@ -13,6 +14,10 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
+  {
+    href: "/",
+    label: "Home",
+  },
   {
     href: "/auctions",
     label: "live auctions",
@@ -62,7 +67,7 @@ export default function Topnav() {
             className="p-0 md:hidden bg-transparent"
             onClick={() => setOpened((prev) => !prev)}
           >
-            <img className="w-5" src="/img/menu.png" alt="" />
+            <Menu className={cn("w-5 h-5", isHomePage ? "text-white" : "text-[#111]")} />
           </Button>
           <Link href="/" onClick={() => setOpened(() => false)}>
             <Picture
@@ -102,11 +107,11 @@ export default function Topnav() {
         </Button>
         <StyledWalletButton variant={isHomePage ? "light" : "dark"} />
       </div>
-      {/* mobile */}
+
       <div
         className={cn(
           "flex flex-col md:hidden absolute top-full left-0 w-full bg-white px-5 overflow-hidden transition-[height]",
-          opened ? "h-[90vh]" : "h-0"
+          opened ? "h-[100vh]" : "h-0"
         )}
       >
         <ul className="flex flex-col gap-4">
