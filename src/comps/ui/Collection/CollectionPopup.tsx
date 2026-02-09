@@ -22,7 +22,7 @@ function DetailsTable() {
   ];
   return (
     <div className="px-4 py-6 rounded-2xl bg-[#fafafa] border border-[#d9d9d9]">
-      <img src="./img/twitter.png" alt="" className="block w-5" />
+      <img src="/img/twitter.png" alt="" className="block w-5" />
       <p className="capitalize text-[14px] py-2">cabinet vint</p>
 
       <ul className="flex flex-col gap-3 pt-1 border-t border-t-[#d9d9d9]">
@@ -33,7 +33,7 @@ function DetailsTable() {
                 {item.label}
               </p>
               <div className="flex items-center">
-                <img src="./img/price-icon.png" className="w-4" alt="" />
+                <img src="/img/price-icon.png" className="w-4" alt="" />
                 <p className="font-inter text-[14px] text-[#111]">
                   {item.value}
                 </p>
@@ -172,7 +172,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
           className="hidden md:block bg-transparent p-0 ml-auto"
           onClick={onClose}
         >
-          <img className="w-5.5" src="./img/close-outline.png" alt="" />
+          <img className="w-5.5" src="/img/close-outline.png" alt="" />
         </Button>
 
         <h2 className="font-grotesk font-medium uppercase text-[32px] md:text-[40px] md:my-3 text-[#0A0F2E]">
@@ -184,7 +184,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
             <p className="font-satoshi capitalize text-lg text-gray-500">
               cabinet vint
             </p>
-            <img src="./img/verified.png" className="w-4.5" alt="" />
+            <img src="/img/verified.png" className="w-4.5" alt="" />
           </div>
 
           <p className="font-satoshi text-gray-500">
@@ -211,7 +211,7 @@ function CollectionItemDetail({ onClose }: { onClose?: () => void }) {
               <span className="text-black uppercase font-satoshi font-regular">
                 $sol
               </span>
-              <img src="./img/chevron-down.png" className="w-6" alt="" />
+              <img src="/img/chevron-down.png" className="w-6" alt="" />
             </Button>
           </div>
         </div>
@@ -338,14 +338,14 @@ export default function CollectionItemPopup({
     <div className={overlayClass}>
       <div className="w-full h-10 block md:hidden max-w-[calc(100vw-16px)]">
         <Button className="block bg-transparent p-0 ml-auto" onClick={onClose}>
-          <img className="w-5.5" src="./img/close-outline-light.png" alt="" />
+          <img className="w-5.5" src="/img/close-outline-light.png" alt="" />
         </Button>
       </div>
       <div className="max-h-screen overflow-y-scroll mx-auto bg-white rounded-2xl md:rounded-xl overflow-hidden max-w-[calc(100vw-16px)]">
         <div className="flex flex-col md:flex-row pt-0.5 pl-0.5 pr-0.5 md:pr-0">
           <img
             className="max-w-full md:max-w-150 md:w-150 md:max-h-150 md:h-150 rounded-2xl md:rounded-xl aspect-square overflow-hidden"
-            src="./img/collection-item-1.png"
+            src="/img/collection-item-1.png"
             alt=""
           />
           <CollectionItemDetail onClose={onClose} />

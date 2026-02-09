@@ -3,23 +3,23 @@ import SectionWrapper from "../primitive/SectionWrapper";
 
 const SOCIAL_MEDIA = [
   {
-    src: "./img/instagram.png",
+    src: "/img/instagram.png",
     href: "#",
   },
   {
-    src: "./img/facebook.png",
+    src: "/img/facebook.png",
     href: "#",
   },
   {
-    src: "./img/linkedin.png",
+    src: "/img/linkedin.png",
     href: "#",
   },
   {
-    src: "./img/twitter.png",
+    src: "/img/twitter.png",
     href: "#",
   },
   {
-    src: "./img/youtube.png",
+    src: "/img/youtube.png",
     href: "#",
   },
 ];
@@ -69,7 +69,7 @@ export default function Footer() {
         <Link href="#">
           <img
             className="h-20.5 mb-7 md:mb-0"
-            src="./img/logo-footer.png"
+            src="/img/logo-footer.png"
             alt="artifacte"
           />
         </Link>

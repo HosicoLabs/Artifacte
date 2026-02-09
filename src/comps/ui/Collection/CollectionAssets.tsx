@@ -19,7 +19,7 @@ function DropdownButton({
       <span className={twMerge("capitalize font-medium", fontSize)}>
         {children}
       </span>
-      <img className="w-5" src="./img/chevron-down.png" alt="" />
+      <img className="w-5" src="/img/chevron-down.png" alt="" />
     </Button>
   );
 }
@@ -28,7 +28,7 @@ function Pagination() {
   return (
     <div className="hidden md:flex items-center justify-center gap-12 ">
       <Button className="p-2">
-        <img src="./img/chevron-left.png" className="w-6" alt="" />
+        <img src="/img/chevron-left.png" className="w-6" alt="" />
       </Button>
       <nav className="h-full ">
         <ul className="flex items-center">
@@ -52,7 +52,7 @@ function Pagination() {
         </ul>
       </nav>
       <Button className="p-2">
-        <img src="./img/chevron-right.png" className="w-6" alt="" />
+        <img src="/img/chevron-right.png" className="w-6" alt="" />
       </Button>
     </div>
   );
@@ -72,73 +72,73 @@ type CollectionItemProps = CollectionItemType & {
 
 const COLLECTION_ASSETS_LIST: CollectionItemType[] = [
   {
-    img: "./img/collection-item-1.png",
+    img: "/img/collection-item-1.png",
     name: "edwin dining chair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-2.png",
+    img: "/img/collection-item-2.png",
     name: "aria dining chair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-3.png",
+    img: "/img/collection-item-3.png",
     name: "sydney armchair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-4.png",
+    img: "/img/collection-item-4.png",
     name: "oxley coffe table",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-5.png",
+    img: "/img/collection-item-5.png",
     name: "edwin dining chair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-6.png",
+    img: "/img/collection-item-6.png",
     name: "aria dining chair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-7.png",
+    img: "/img/collection-item-7.png",
     name: "sydney armchair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-8.png",
+    img: "/img/collection-item-8.png",
     name: "oxley coffe table",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-9.png",
+    img: "/img/collection-item-9.png",
     name: "lara armchair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-10.png",
+    img: "/img/collection-item-10.png",
     name: "noelle modular curved",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-11.png",
+    img: "/img/collection-item-11.png",
     name: "garret armchair",
     edition: "3/50",
     price: "2.6eth",
   },
   {
-    img: "./img/collection-item-12.png",
+    img: "/img/collection-item-12.png",
     name: "theodore armchair",
     edition: "3/50",
     price: "2.6eth",
@@ -213,7 +213,7 @@ function Dropdown({ label }: { label: string }) {
             "transition-[rotate] w-5",
             opened ? "rotate-180" : "rotate-0"
           )}
-          src="./img/chevron-down.png"
+          src="/img/chevron-down.png"
           alt=""
         />
       </div>
@@ -251,7 +251,7 @@ function CollectionFilter() {
     <form className="bg-white rounded-[18px] md:rounded-xl flex items-center justify-between px-3 md:px-3.5 relative">
       <img
         className="w-4.5 md:hidden mr-[.5em]"
-        src="./img/search-dark.png"
+        src="/img/search-dark.png"
         alt=""
       />
 
@@ -265,14 +265,14 @@ function CollectionFilter() {
         className="hidden md:inline p-0 absolute right-3.5 top-[50%] translate-y-[-50%]"
         type="submit"
       >
-        <img className="w-4.5" src="./img/search-dark.png" alt="" />
+        <img className="w-4.5" src="/img/search-dark.png" alt="" />
       </Button>
 
       <Button
         onClick={() => setOpened((prev) => !prev)}
         className="inline md:hidden p-2"
       >
-        <img className="w-4.5" src="./img/filter.png" alt="" />
+        <img className="w-4.5" src="/img/filter.png" alt="" />
       </Button>
 
       <div
@@ -288,7 +288,7 @@ function CollectionFilter() {
             className="p-0 bg-transparent w-5"
             onClick={() => setOpened(() => false)}
           >
-            <img src="./img/x.png" alt="" />
+            <img src="/img/x.png" alt="" />
           </Button>
         </div>
         <ul className="flex flex-col divide-y divide-[#e5e5e5]">

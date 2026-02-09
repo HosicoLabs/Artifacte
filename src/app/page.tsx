@@ -1,17 +1,23 @@
-import HomeAboutUs from "@/comps/ui/Home/HomeAboutUs";
-import HomeCollection from "@/comps/ui/Home/HomeCollection";
-import HomeHero from "@/comps/ui/Home/HomeHero";
-import HomeKeyMetrices from "@/comps/ui/Home/HomeKeyMetrics";
-import HomeValues from "@/comps/ui/Home/HomeValues";
+'use client';
+
+import { useState } from 'react';
+import InvestorProfileHeader from '@/comps/ui/Dashboard/InvestorProfileHeader';
+import InstitutionalAssets from '@/comps/ui/Dashboard/InstitutionalAssets';
+import LiveAuctions from '@/comps/ui/Dashboard/LiveAuctions';
+import RecentRWAListings from '@/comps/ui/Dashboard/RecentRWAListings';
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
-    <main>
-      <HomeHero />
-      <HomeCollection />
-      <HomeAboutUs />
-      <HomeValues />
-      <HomeKeyMetrices />
+    <main className="pt-[60px] md:pt-[72px]">
+      <InvestorProfileHeader
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
+      <InstitutionalAssets searchQuery={searchQuery} />
+      <LiveAuctions searchQuery={searchQuery} />
+      <RecentRWAListings searchQuery={searchQuery} />
     </main>
   );
 }

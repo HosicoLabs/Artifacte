@@ -27,13 +27,13 @@ export default function HomeAboutUs() {
         </div>
         <div className="flex gap-3 md:gap-7">
           <Picture
-            smSrc="./img/home-about-1-sm.png"
-            mdSrc="./img/home-about-1.png"
+            smSrc="/img/home-about-1-sm.png"
+            mdSrc="/img/home-about-1.png"
             className=" md:max-w-[calc(50vw-3.5rem)]"
           />
           <Picture
-            smSrc="./img/home-about-2-sm.png"
-            mdSrc="./img/home-about-2.png"
+            smSrc="/img/home-about-2-sm.png"
+            mdSrc="/img/home-about-2.png"
             className=" md:max-w-[calc(50vw-3.5rem)]"
           />
         </div>

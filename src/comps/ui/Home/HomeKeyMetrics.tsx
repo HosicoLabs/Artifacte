@@ -36,8 +36,8 @@ function FirstSection() {
       <div className="flex gap-6 md:gap-10 flex-col md:flex-row">
         <div className="relative grow overflow-hidden">
           <Picture
-            smSrc="./img/home-key-metrices-sm.png"
-            mdSrc="./img/home-key-metrices.png"
+            smSrc="/img/home-key-metrices-sm.png"
+            mdSrc="/img/home-key-metrices.png"
             className="absolute top-0 left-0 z-1 pointer-events-none brightness-80 block min-w-full max-w-full min-h-full max-h-full object-cover"
           />
 
@@ -90,27 +90,27 @@ function SecondSection() {
   const [selected, setSelected] = useState<string>("");
   const STEPS = [
     {
-      icon: "./img/battery-full.png",
+      icon: "/img/battery-full.png",
       title: "describe the asset",
       desc: "Provide key details, ownership information, and provenance to represent your real-world asset as an NFT.",
     },
     {
-      icon: "./img/upload.png",
+      icon: "/img/upload.png",
       title: "upload proof & documentation",
       desc: "Provide key details, ownership information, and provenance to represent your real-world asset as an NFT.",
     },
     {
-      icon: "./img/speaker.png",
+      icon: "/img/speaker.png",
       title: "review and submit",
       desc: "Provide key details, ownership information, and provenance to represent your real-world asset as an NFT.",
     },
     {
-      icon: "./img/feather.png",
+      icon: "/img/feather.png",
       title: "asset verification",
       desc: "Provide key details, ownership information, and provenance to represent your real-world asset as an NFT.",
     },
     {
-      icon: "./img/bot.png",
+      icon: "/img/bot.png",
       title: "auction goes live",
       desc: "Provide key details, ownership information, and provenance to represent your real-world asset as an NFT.",
     },
@@ -159,7 +159,7 @@ function SecondSection() {
       </div>
       <img
         className="md:basis-1/2 md:max-w-[53%]"
-        src="./img/home-key-metrices-bot.png"
+        src="/img/home-key-metrices-bot.png"
         alt=""
       />
     </SectionWrapper>

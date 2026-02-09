@@ -23,56 +23,56 @@ const CURATED_ASSETS: CuratedItemType[] = [
     currentBid: "2.6 ETH",
     bidEnded: "1d 12h",
     currentPrice: null,
-    img: "./img/oakwood-cabinet.png",
-    imgSm: "./img/oakwood-cabinet-sm.png",
+    img: "/img/oakwood-cabinet.png",
+    imgSm: "/img/oakwood-cabinet-sm.png",
   },
   {
     name: "hand crafted storage (1954)",
     currentBid: "2.6 ETH",
     bidEnded: "1d 12h",
     currentPrice: null,
-    img: "./img/hand-crafted-storage.png",
-    imgSm: "./img/hand-crafted-storage-sm.png",
+    img: "/img/hand-crafted-storage.png",
+    imgSm: "/img/hand-crafted-storage-sm.png",
   },
   {
     name: "pair of molina armless",
     currentBid: "2.6 ETH",
     bidEnded: "1d 12h",
     currentPrice: null,
-    img: "./img/pair-of-molina-armless.png",
-    imgSm: "./img/pair-of-molina-armless-sm.png",
+    img: "/img/pair-of-molina-armless.png",
+    imgSm: "/img/pair-of-molina-armless-sm.png",
   },
   {
     name: "edwin dining chair",
     currentBid: null,
     bidEnded: null,
     currentPrice: "2.6 ETH",
-    img: "./img/edwin-dining-chair.png",
-    imgSm: "./img/edwin-dining-chair-sm.png",
+    img: "/img/edwin-dining-chair.png",
+    imgSm: "/img/edwin-dining-chair-sm.png",
   },
   {
     name: "aria dining chair",
     currentBid: null,
     bidEnded: null,
     currentPrice: "2.6 ETH",
-    img: "./img/aria-dining-chair.png",
-    imgSm: "./img/aria-dining-chair-sm.png",
+    img: "/img/aria-dining-chair.png",
+    imgSm: "/img/aria-dining-chair-sm.png",
   },
   {
     name: "sydney armchair",
     currentBid: null,
     bidEnded: null,
     currentPrice: "2.6 ETH",
-    img: "./img/sydney-armchair.png",
-    imgSm: "./img/sydney-armchair-sm.png",
+    img: "/img/sydney-armchair.png",
+    imgSm: "/img/sydney-armchair-sm.png",
   },
   {
     name: "oxley coffe table",
     currentBid: null,
     bidEnded: null,
     currentPrice: "2.6 ETH",
-    img: "./img/oxley-coffe-table.png",
-    imgSm: "./img/oxley-coffe-table-sm.png",
+    img: "/img/oxley-coffe-table.png",
+    imgSm: "/img/oxley-coffe-table-sm.png",
   },
 ];
 
@@ -178,10 +178,10 @@ export default function HomeCollection() {
       <div className="flex pb-6 md:pb-0 px-4 md:px-0 items-center justify-between bg-[#FAF6F3] md:bg-transparent ">
         <div className="flex  gap-4 items-center">
           <Button className="border bg-transparent p-3 border-[#00000010]">
-            <img className="w-5" src="./img/chevron-left.png" />
+            <img className="w-5" src="/img/chevron-left.png" />
           </Button>
           <Button className="border bg-transparent p-3 border-[#00000010]">
-            <img className="w-5" src="./img/chevron-right.png" />
+            <img className="w-5" src="/img/chevron-right.png" />
           </Button>
         </div>
         <Button className="bg-[#00000005] text-black">view all</Button>

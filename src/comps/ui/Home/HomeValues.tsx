@@ -22,8 +22,8 @@ export default function HomeValues() {
       </h2>
       <div className="md:col-span-2 row-span-5 md:row-span-3 md:col-start-2 md:row-start-2">
         <Picture
-          smSrc="./img/home-values-sm.png"
-          mdSrc="./img/home-values.png"
+          smSrc="/img/home-values-sm.png"
+          mdSrc="/img/home-values.png"
         />
       </div>
     </SectionWrapper>

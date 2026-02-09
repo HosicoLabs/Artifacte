@@ -14,7 +14,7 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   {
-    href: "#",
+    href: "/auctions",
     label: "live auctions",
   },
   {
@@ -22,12 +22,16 @@ const NAV_LINKS: NavLink[] = [
     label: "collections",
   },
   {
-    href: "#",
-    label: "how it works",
+    href: "/my-collection",
+    label: "my collection",
+  },
+  {
+    href: "/overview",
+    label: "overview",
   },
   {
     href: "#",
-    label: "submit asset",
+    label: "how it works",
   },
   {
     href: "#",
@@ -36,7 +40,7 @@ const NAV_LINKS: NavLink[] = [
 ];
 
 const CONTAINER_BASE_CLASS =
-  "flex items-center justify-between bg-white md:bg-transparent py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b border-b-[#d9d9d9] md:backdrop-blur-[20px]";
+  "flex items-center justify-between py-3 px-5 md:px-10 md:py-3 fixed top-0 w-full z-50 border-b md:backdrop-blur-[20px]";
 
 export default function Topnav() {
   const path = usePathname();
@@ -48,7 +52,7 @@ export default function Topnav() {
     <nav
       className={cn(
         CONTAINER_BASE_CLASS,
-        isHomePage ? "bg-[#11111110]" : "bg-[#ffffff10]"
+        isHomePage ? "bg-[#191919] border-b-[#191919] md:bg-[#191919cc]" : "bg-white md:bg-[#ffffff10] border-b-[#d9d9d9]"
       )}
     >
       {/* left  */}
@@ -58,22 +62,21 @@ export default function Topnav() {
             className="p-0 md:hidden bg-transparent"
             onClick={() => setOpened((prev) => !prev)}
           >
-            <img className="w-5" src="./img/menu.png" alt="" />
+            <img className="w-5" src="/img/menu.png" alt="" />
           </Button>
           <Link href="/" onClick={() => setOpened(() => false)}>
             <Picture
               mdSrc={
-                isHomePage ? "./img/logo-light.png" : "./img/logo-dark.png"
+                isHomePage ? "/img/logo-light.png" : "/img/logo-dark.png"
               }
-              smSrc="./img/logo-dark.png"
+              smSrc={isHomePage ? "/img/logo-light.png" : "/img/logo-dark.png"}
               alt="artifacte"
               className="h-6"
             />
           </Link>
         </div>
-        <StyledWalletButton variant="light" isMobile />
+        <StyledWalletButton variant={isHomePage ? "light" : "light"} isMobile />
       </div>
-      {/* desktop */ }
       <ul className="hidden md:flex items-center gap-8">
         {NAV_LINKS.map((link, index) => {
           const isActive = !isHomePage && path === link.href;
@@ -95,7 +98,7 @@ export default function Topnav() {
       </ul>
       <div className="hidden md:flex items-center gap-4">
         <Button className="bg-transparent p-0">
-          <img className="w-5" src="./img/search-light.png" alt="search" />
+          <img className="w-5" src={isHomePage ? "/img/search-light.png" : "/img/search-dark.png"} alt="search" />
         </Button>
         <StyledWalletButton variant={isHomePage ? "light" : "dark"} />
       </div>
@@ -120,7 +123,7 @@ export default function Topnav() {
         </ul>
         <div className="hidden gap-4">
           <Button className="bg-transparent p-0">
-            <img className="w-5" src="./img/search-light.png" alt="search" />
+            <img className="w-5" src="/img/search-light.png" alt="search" />
           </Button>
           <StyledWalletButton variant="light" />
         </div>

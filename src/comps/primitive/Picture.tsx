@@ -1,13 +1,26 @@
+interface PictureProps {
+  src?: string;
+  smSrc?: string;
+  mdSrc?: string;
+  className?: string;
+  alt?: string;
+}
+
 export default function Picture({
-  smSrc = "",
-  mdSrc = "",
+  src,
+  smSrc,
+  mdSrc,
   className = "",
   alt = "",
-}) {
+}: PictureProps) {
+  // If only src is provided, use it for both sizes
+  const smallSource = smSrc ?? src ?? "";
+  const mediumSource = mdSrc ?? src ?? "";
+
   return (
     <picture>
-      <source srcSet={mdSrc} media="(min-width:768px)" />
-      <img className={className} src={smSrc} alt={alt} />
+      <source srcSet={mediumSource} media="(min-width:768px)" />
+      <img className={className} src={smallSource} alt={alt} />
     </picture>
   );
 }

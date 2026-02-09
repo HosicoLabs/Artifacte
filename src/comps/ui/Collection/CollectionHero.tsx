@@ -72,8 +72,8 @@ export default function CollectionHero() {
         {achievements}
       </div>
       <Picture
-        mdSrc="./img/collection_hero.webp"
-        smSrc="./img/collection_hero_sm.webp"
+        mdSrc="/img/collection_hero.webp"
+        smSrc="/img/collection_hero_sm.webp"
         className="max-w-full absolute md:static top-0 left-0 z-[-1] "
         alt="artifacte"
       />
