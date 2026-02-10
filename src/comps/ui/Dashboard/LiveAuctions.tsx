@@ -4,7 +4,8 @@ import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import SectionWrapper from '@/comps/primitive/SectionWrapper';
-import { Auction } from '@/lib/types';
+import { Auction, RWAAuction } from '@/lib/types';
+import { rwaAuctions } from '@/lib/rwa-data';
 
 // =============================================================================
 // Countdown Timer Utilities
@@ -87,159 +88,65 @@ function CountdownBadge({ endTime }: CountdownBadgeProps) {
 }
 
 // =============================================================================
-// Mock Auction Data (reuse from auctions page later)
-// =============================================================================
-
-const MOCK_AUCTIONS: Array<{
-  auction: Auction;
-  metadata: { name: string; image: string; symbol: string };
-}> = [
-  {
-    auction: {
-      id: '1',
-      nftMint: 'fine-art-a',
-      seller: 'seller1',
-      startingPrice: 12.4,
-      currentBid: {
-        id: 'bid1',
-        auctionId: '1',
-        bidder: 'bidder1',
-        amount: 12.4,
-        timestamp: new Date(),
-        signature: 'sig1',
-      },
-      bids: [],
-      status: 'live',
-      startsAt: new Date(Date.now() - 3600000),
-      endsAt: new Date(Date.now() + 86400000 + 43200000), // 1d 12h from now
-      minBidIncrement: 0.1,
-      extensionTime: 300,
-    },
-    metadata: {
-      name: 'Fine Art Collection A',
-      image: '/img/hand-crafted-storage.png',
-      symbol: 'DIGITAL ART',
-    },
-  },
-  {
-    auction: {
-      id: '2',
-      nftMint: 'logistics-hub',
-      seller: 'seller2',
-      startingPrice: 85.25,
-      currentBid: {
-        id: 'bid2',
-        auctionId: '2',
-        bidder: 'bidder2',
-        amount: 85.25,
-        timestamp: new Date(),
-        signature: 'sig2',
-      },
-      bids: [],
-      status: 'live',
-      startsAt: new Date(Date.now() - 7200000),
-      endsAt: new Date(Date.now() + 28800000), // 8h from now
-      minBidIncrement: 1.0,
-      extensionTime: 300,
-    },
-    metadata: {
-      name: 'Logistics Hub Nevada',
-      image: '/img/pair-of-molina-armless.png',
-      symbol: 'REAL ESTATE',
-    },
-  },
-  {
-    auction: {
-      id: '3',
-      nftMint: 'gold-vault',
-      seller: 'seller3',
-      startingPrice: 50.0,
-      currentBid: {
-        id: 'bid3',
-        auctionId: '3',
-        bidder: 'bidder3',
-        amount: 52.5,
-        timestamp: new Date(),
-        signature: 'sig3',
-      },
-      bids: [],
-      status: 'live',
-      startsAt: new Date(Date.now() - 1800000),
-      endsAt: new Date(Date.now() + 172800000), // 2d from now
-      minBidIncrement: 0.5,
-      extensionTime: 300,
-    },
-    metadata: {
-      name: 'Gold Reserve Collection',
-      image: '/img/edwin-dining-chair.png',
-      symbol: 'PRECIOUS METALS',
-    },
-  },
-];
-
-// =============================================================================
 // Auction Card Component
 // =============================================================================
 
 interface AuctionCardProps {
-  auction: Auction;
-  metadata: { name: string; image: string; symbol: string };
+  auction: RWAAuction;
 }
 
-function AuctionCard({ auction, metadata }: AuctionCardProps) {
-  const currentBid = auction.currentBid?.amount ?? auction.startingPrice;
-  const isLive = auction.status === 'live';
+function AuctionCard({ auction }: AuctionCardProps) {
+  const currentBid = auction.currentBidPrice;
+  const isLive = new Date() < auction.auctionEndsAt;
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-[#D9D9D9] cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02]">
-      {/* Image */}
-      <div className="aspect-square overflow-hidden bg-[#FAF6F3] relative">
-        <img
-          src={metadata.image}
-          alt={metadata.name}
-          className="w-full h-full object-cover"
-        />
+    <Link href={`/auctions/${auction.id}`} className="block">
+      <div className="bg-white rounded-2xl overflow-hidden border border-[#D9D9D9] cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02]">
+        <div className="aspect-square overflow-hidden bg-[#FAF6F3] relative">
+          <img
+            src={auction.image}
+            alt={auction.name}
+            className="w-full h-full object-cover"
+          />
 
-        {/* Live Badge */}
-        {isLive && (
-          <div className="absolute top-3 left-3 px-3 py-1 bg-[#AC463A] text-white text-[10px] md:text-[11px] font-bold rounded-full flex items-center gap-1.5">
-            <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-            LIVE
+          {isLive && (
+            <div className="absolute top-3 left-3 px-3 py-1 bg-[#AC463A] text-white text-[10px] md:text-[11px] font-bold rounded-full flex items-center gap-1.5">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              LIVE
+            </div>
+          )}
+
+          <CountdownBadge endTime={auction.auctionEndsAt} />
+        </div>
+
+        <div className="p-4">
+          <p className="text-[10px] md:text-[11px] text-[#857F94] uppercase font-medium mb-1">
+            {auction.series}
+          </p>
+          <h3 className="font-medium text-[#0A0F2E] text-[14px] md:text-[16px] mb-3 line-clamp-2">
+            {auction.name}
+          </h3>
+
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[10px] md:text-[11px] text-[#857F94] mb-1">
+                CURRENT BID
+              </p>
+              <p className="font-bold text-[#191919] text-[16px] md:text-[18px]">
+                ${(currentBid / 1000).toFixed(1)}
+                <span className="text-[12px] md:text-[14px] text-[#857F94] font-normal ml-1">
+                  K
+                </span>
+              </p>
+            </div>
+
+            <button className="bg-[#191919] text-white px-4 py-2 text-[12px] md:text-[14px] font-medium hover:bg-[#111111] transition-colors">
+              Bid Now
+            </button>
           </div>
-        )}
-
-        {/* Countdown Timer */}
-        <CountdownBadge endTime={auction.endsAt} />
-      </div>
-
-      {/* Details */}
-      <div className="p-4">
-        <p className="text-[10px] md:text-[11px] text-[#857F94] uppercase font-medium mb-1">
-          {metadata.symbol}
-        </p>
-        <h3 className="font-medium text-[#0A0F2E] text-[14px] md:text-[16px] mb-3">
-          {metadata.name}
-        </h3>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-[10px] md:text-[11px] text-[#857F94] mb-1">
-              CURRENT BID
-            </p>
-            <p className="font-bold text-[#191919] text-[16px] md:text-[18px]">
-              ${currentBid.toFixed(3)}
-              <span className="text-[12px] md:text-[14px] text-[#857F94] font-normal ml-1">
-                K
-              </span>
-            </p>
-          </div>
-
-          <button className="bg-[#191919] text-white px-4 py-2 text-[12px] md:text-[14px] font-medium hover:bg-[#111111] transition-colors">
-            Bid Now
-          </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -254,13 +161,14 @@ interface LiveAuctionsProps {
 export default function LiveAuctions({ searchQuery }: LiveAuctionsProps) {
   const filteredAuctions = useMemo(() => {
     if (!searchQuery?.trim()) {
-      return MOCK_AUCTIONS;
+      return rwaAuctions;
     }
 
     const lowerQuery = searchQuery.toLowerCase();
-    return MOCK_AUCTIONS.filter(({ metadata }) =>
-      metadata.name.toLowerCase().includes(lowerQuery) ||
-      metadata.symbol.toLowerCase().includes(lowerQuery)
+    return rwaAuctions.filter((auction) =>
+      auction.name.toLowerCase().includes(lowerQuery) ||
+      auction.series.toLowerCase().includes(lowerQuery) ||
+      auction.description.toLowerCase().includes(lowerQuery)
     );
   }, [searchQuery]);
 
@@ -282,11 +190,10 @@ export default function LiveAuctions({ searchQuery }: LiveAuctionsProps) {
         </Link>
       </div>
 
-      {/* Auction Grid */}
       {filteredAuctions.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredAuctions.map(({ auction, metadata }) => (
-            <AuctionCard key={auction.id} auction={auction} metadata={metadata} />
+          {filteredAuctions.map((auction) => (
+            <AuctionCard key={auction.id} auction={auction} />
           ))}
         </div>
       ) : (

@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import SectionWrapper from '@/comps/primitive/SectionWrapper';
 import Button from '@/comps/primitive/Button';
 import { RWAAsset, RWACategory } from '@/lib/types';
-import { institutionalAssets, categoryLabels } from '@/lib/rwa-data';
+import { institutionalAssets, categoryLabels, rwaAuctions } from '@/lib/rwa-data';
 
 interface InstitutionalAssetsProps {
   searchQuery: string;
@@ -32,23 +33,26 @@ function AssetCard({ asset }: { asset: RWAAsset }) {
     return badges[category];
   };
 
+  const getAuctionLink = (): string => {
+    const matchingAuction = rwaAuctions.find((auction) => auction.category === asset.category);
+    return `/auctions/${matchingAuction?.id || rwaAuctions[0]?.id || 'master-ultra-thin-calendar'}`;
+  };
+
   return (
-    <div className="group cursor-pointer">
-      <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[4/3] bg-[#FAF6F3]">
+    <Link href={getAuctionLink()} className="block group cursor-pointer">
+      <div className="relative overflow-hidden rounded-2xl mb-4 aspect-4/3 bg-[#FAF6F3]">
         <img
           src={asset.image}
           alt={asset.name}
           className="w-full h-full object-cover"
         />
         
-        {/* Category Badge */}
         <div className="absolute top-3 left-3">
           <div className="bg-[#191919] text-white text-[10px] md:text-[11px] font-medium px-3 py-1 rounded-full uppercase">
             {getCategoryBadge(asset.category)}
           </div>
         </div>
 
-        {/* Orange badge (matching design) */}
         {asset.sharesSold / asset.totalShares > 0.7 && (
           <div className="absolute top-3 right-3">
             <div className="bg-[#191919] text-white text-[10px] md:text-[11px] font-medium px-3 py-1 rounded-full uppercase">
@@ -72,7 +76,7 @@ function AssetCard({ asset }: { asset: RWAAsset }) {
           <span className="text-[12px] md:text-[14px] text-[#6C737F]">/ Share</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -82,12 +86,10 @@ export default function InstitutionalAssets({ searchQuery }: InstitutionalAssets
   const filteredAssets = useMemo(() => {
     let assets = institutionalAssets;
 
-    // Filter by category
     if (selectedCategory !== 'all') {
       assets = assets.filter((asset) => asset.category === selectedCategory);
     }
 
-    // Filter by search query
     if (searchQuery?.trim()) {
       const lowerQuery = searchQuery.toLowerCase();
       assets = assets.filter(
@@ -112,7 +114,6 @@ export default function InstitutionalAssets({ searchQuery }: InstitutionalAssets
 
   return (
     <SectionWrapper className="bg-[#FAF6F3]">
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[24px] md:text-[32px] font-philosopher font-bold">
           Institutional Assets
@@ -122,7 +123,6 @@ export default function InstitutionalAssets({ searchQuery }: InstitutionalAssets
         </button>
       </div>
 
-      {/* Category Filters */}
       <div className="flex flex-wrap gap-2 mb-8">
         {categories.map((category) => (
           <Button
@@ -140,7 +140,6 @@ export default function InstitutionalAssets({ searchQuery }: InstitutionalAssets
         ))}
       </div>
 
-      {/* Asset Grid */}
       {filteredAssets.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {filteredAssets.slice(0, 8).map((asset) => (

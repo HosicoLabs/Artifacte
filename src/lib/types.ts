@@ -308,3 +308,87 @@ export interface RWAListing {
   /** Whether item is featured */
   featured?: boolean;
 }
+
+// =============================================================================
+// RWA Auction Types
+// =============================================================================
+
+export type BidderType = 'institutional' | 'private';
+
+export interface BidHistoryItem {
+  /** Unique bid identifier */
+  id: string;
+  /** Bidder display name */
+  bidderName: string;
+  /** Bidder type */
+  bidderType: BidderType;
+  /** Bid amount in USD */
+  amount: number;
+  /** Whether bidder is KYC verified */
+  verified: boolean;
+  /** When the bid was placed */
+  timestamp: Date;
+}
+
+export interface AuctionDocument {
+  /** Document identifier */
+  id: string;
+  /** Document name/title */
+  name: string;
+  /** Document type */
+  type: 'certificate' | 'insurance' | 'appraisal' | 'legal' | 'other';
+  /** Download URL */
+  url: string;
+  /** File size in bytes */
+  size?: number;
+}
+
+export interface ValuationPoint {
+  /** Date of valuation */
+  date: Date;
+  /** Valuation amount in USD */
+  value: number;
+}
+
+export type AuctionTimePeriod = '1M' | '6M' | '1Y';
+
+export interface RWAAuction {
+  /** Unique auction ID */
+  id: string;
+  /** Asset name */
+  name: string;
+  /** Series/collection name */
+  series: string;
+  /** Asset identifier (e.g., RWA-992-CH) */
+  assetId: string;
+  /** Primary image URL */
+  image: string;
+  /** Additional image URLs */
+  images: string[];
+  /** Whether physical custody is verified */
+  custodyVerified: boolean;
+  /** Appraised value in USD */
+  appraisedValue: number;
+  /** Condition grade (e.g., "Mint (Grade 1)", "Excellent") */
+  conditionGrade: string;
+  /** Detailed description */
+  description: string;
+  /** Legal ownership description */
+  legalDescription: string;
+  /** Current bid price in USD */
+  currentBidPrice: number;
+  /** Current bid price in ETH */
+  currentBidETH: number;
+  /** Buy now price in USD (optional) */
+  buyNowPrice?: number;
+  /** When the auction ends */
+  auctionEndsAt: Date;
+  /** Legal documents */
+  documents: AuctionDocument[];
+  /** Asset valuation history */
+  valuationHistory: ValuationPoint[];
+  /** Bid history */
+  bidHistory: BidHistoryItem[];
+  /** Asset category */
+  category: RWACategory;
+}
